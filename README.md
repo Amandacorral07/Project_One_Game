@@ -10,3 +10,12 @@ Oh No! The Simpsons family are late to the Dodger game! You have to help them th
 3. Hit any cars and lose the game.
 4. Have fun!
 
+![Read me Images](images/1.png)
+![Read me Images](images/2.png)
+![Read me Images](images/3.png)
+![Read me Images](images/4.png)
+![Read me Images](images/5.png)
+![Read me Images](images/6.png)
+![Read me Images](images/7.png)
+![Read me Images](images/8.png)
+![Read me Images](images/9.png)
