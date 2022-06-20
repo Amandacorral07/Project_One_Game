@@ -8,6 +8,13 @@ h1, h2{
     text-align: center;
     color: aliceblue;
 }
+h1{
+    font-size: 27px;
+}
+
+h2{
+    font-size: 24px;
+}
 #simpsons-logo{
     max-width: 25%;
     max-height: 25%;
@@ -22,14 +29,8 @@ h1, h2{
     margin-left: 40%;
     display: block;
 }
-li{
+#index-li{
     display: inline-block;
-    color: aliceblue;
-
-}
-
-.row{
-    margin-top: 5%;
 }
 
 #instructions{
@@ -46,6 +47,52 @@ li{
     background-color: #EB5E30;
     font-size: 20px;
     padding: 2px 42px;
-    font-size: 20px;
     margin-top: 10px;
+}
+
+#simpsons-logo-instructions{
+    max-width: 20%;
+    max-height: 20%;
+    margin: 0 auto;
+    display: block;
+    width: 50%;
+    margin-top: 1%;
+}
+
+#back-button{
+    border-color: black;
+    border-width: 2px;
+    background-color: #EB5E30;
+    font-size: 18px;
+    padding: 2px 30px;
+    margin-left: 40%;
+    display: inline-block;
+}
+
+#start-button{
+    border-color: black;
+    border-width: 2px;
+    background-color: rgb(255, 223, 37);
+    font-size: 18px;
+    padding: 2px 30px;
+    display: inline-block;
+}
+
+
+ol{
+    margin-left: 28%;
+    color: aliceblue;
+    font-size: 20px;
+    padding-bottom: 3%;
+    
+}
+#instructions-heading{
+    margin-top: 1%;
+}
+
+#canvas-container, .canvas{
+    border-color: aliceblue;
+    border-width: 2px;
+    width: 720px;
+    height: 960px;
 }
