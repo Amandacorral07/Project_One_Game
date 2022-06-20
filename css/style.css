@@ -1,0 +1,51 @@
+body{
+    background-color: #046EFD;
+}
+.container{
+    margin-top: 2.5%;
+}
+h1, h2{
+    text-align: center;
+    color: aliceblue;
+}
+#simpsons-logo{
+    max-width: 25%;
+    max-height: 25%;
+    margin: 0 auto;
+    display: block;
+    width: 50%;
+}
+
+#simpsons-family{
+    max-width: 75%;
+    max-height: 75%;
+    margin-left: 40%;
+    display: block;
+}
+li{
+    display: inline-block;
+    color: aliceblue;
+
+}
+
+.row{
+    margin-top: 5%;
+}
+
+#instructions{
+    margin-top: 100px;
+    border-color: black;
+    border-width: 2px;
+    background-color: rgb(255, 223, 37);
+    font-size: 20px;
+}
+
+#start{
+    border-color: black;
+    border-width: 2px;
+    background-color: #EB5E30;
+    font-size: 20px;
+    padding: 2px 42px;
+    font-size: 20px;
+    margin-top: 10px;
+}
