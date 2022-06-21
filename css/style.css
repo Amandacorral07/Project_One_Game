@@ -12,6 +12,7 @@ h1, h2{
 }
 h1{
     font-size: 27px;
+    margin-top: 20px;
 }
 
 h2{
@@ -141,17 +142,37 @@ ol{
     display: flex;
 }
 #simpson-gif{
-    width: 70%;
+    width: 60%;
     height: 50%;
     display: flex;
+    justify-content: center;
+    margin: 0 auto;
     position: relative;
-    top: 162px;
-    left: 60px
+    top: 150px;
+    
 }
 
 #winner{
     color:rgb(255, 223, 37);
     font-size: 30px;
-    position: relative;
-    top: 130px
+    /* position: relative;
+    top: 130px */
+}
+
+#donut-gif-1, #donut-gif-2{
+    
+    
+}
+
+#donut-gif-1{
+    left: 5px;
+    position: absolute;
+}
+#donut-gif-2{
+    right: 3px;
+    position: absolute;
+}
+
+audio{
+    display: none;
 }
