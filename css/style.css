@@ -1,5 +1,6 @@
 body{
     background-color: #046EFD;
+    
 }
 .container{
     margin-top: 2.5%;
@@ -7,6 +8,7 @@ body{
 h1, h2{
     text-align: center;
     color: aliceblue;
+    font-family: 'Montserrat', sans-serif;
 }
 h1{
     font-size: 27px;
@@ -78,6 +80,22 @@ h2{
     display: inline-block;
 }
 
+#play-again-button{
+    border-radius: 5px;
+    border-color: black;
+    border-width: 2px;
+    background-color: rgb(255, 223, 37);
+    font-size: 18px;
+    padding: 3px 30px;
+    display: inline-block;
+    position: relative;
+    top: 2px;
+}
+
+.buttons{
+    margin-top: 35px;
+    /* change later once road is in container */
+}
 
 ol{
     margin-left: 28%;
@@ -90,9 +108,50 @@ ol{
     margin-top: 1%;
 }
 
-#canvas-container, .canvas{
-    border-color: aliceblue;
-    border-width: 2px;
-    width: 720px;
-    height: 960px;
+.container{
+    background-color: rgb(60, 189, 82);
+    border: 7px solid whitesmoke;
+    border-radius: 10px;
+    width: 35%;
+    height: 500px;
+}
+
+/* .road{
+    width: 400px;
+    height: fit-content;
+    background-color: rgb(42, 42, 42);
+    margin: auto;
+    position: relative;
+    border-left: 7px dashed white;
+    border-right: 7px dashed white; */
+/* } */
+
+#canvas {
+    background-color: rgb(60, 59, 59);
+    border-left: 7px dashed white;
+    border-right: 7px dashed white;
+    margin: auto;
+    width: 80%;
+    height: 486px;
+    display: flex;
+    justify-content: center;
+}
+#top-left {
+    grid-area: top-left;
+    display: flex;
+}
+#simpson-gif{
+    width: 70%;
+    height: 50%;
+    display: flex;
+    position: relative;
+    top: 162px;
+    left: 60px
+}
+
+#winner{
+    color:rgb(255, 223, 37);
+    font-size: 30px;
+    position: relative;
+    top: 130px
 }
