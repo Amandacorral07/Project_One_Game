@@ -11,11 +11,8 @@ console.log('this is the canvas height', game.height)
 // game.setAttribute('width', '230')
 // game.setAttribute('height', '486')
 
-// class RandomCars {
-//     static random(max, min=0){
-//         return Math.random()*(max-min)+min;
-//     }
-// }
+
+
 
 class YellowCar{
     constructor(x, y, width, height){
@@ -26,20 +23,18 @@ class YellowCar{
         // this.velocityX =0,
         // this.friction = 0.9,
         this.alive = true,
-        // this.pattern= pattern
         this.speed = 5,
         this.direction = {
             left: false,
             right: false
         }
     }
+    
     setDirection = function (key) {
         console.log('this is the key that was pressed', key)
         // if (key.toLowerCase() == 'w') { this.direction.up = true }
         // if (key.keyCode == 37) { this.direction.left = true }
         if (key.toLowerCase() == 'a') { this.direction.left = true }
-        console.log(this.x)
-        console.log(yellowCar.x)
         requestAnimationFrame(gameLoop,120)
         // if (key.toLowerCase() == 's') { this.direction.down = true }
         if (key.toLowerCase() == 'd') { this.direction.right = true }
@@ -51,7 +46,7 @@ class YellowCar{
         // if (key.toLowerCase() == 'w') { this.direction.up = false }
         if (key.toLowerCase() == 'a') { this.direction.left = false }
         // requestAnimationFrame(gameLoop,60)
-        // if (key.keyCode == 37) { this.direction.left = false }
+        if (key.keyCode == 37) { this.direction.left = false }
         // if (key.toLowerCase() == 's') { this.direction.down = false }
         if (key.toLowerCase() == 'd') { this.direction.right = false }
         // requestAnimationFrame(gameLoop,60)
@@ -77,6 +72,7 @@ class YellowCar{
     
 }
 
+
     render= function(){
         const yellowCar = new Image()
             yellowCar.src= "images/yellowcar.png"
@@ -85,6 +81,9 @@ class YellowCar{
                 
         }
 }
+    // draw()
+    // moveLine()
+    
 
 }
 
@@ -242,7 +241,7 @@ console.log(yellowCar.x)
 // requestAnimationFrame(gameLoop,60)
 // document.addEventListener('click', function(){
     // (e.keyCode)=true
-    // let offset =0
+    let offset =0
 // repeating roadlines
 
 document.addEventListener('keydown', (e) => {
@@ -266,29 +265,7 @@ document.addEventListener('DOMContentLoaded', function(){
 })
 
 // function draw(){
-//     // let yellowCar = new Image()
-//     //     yellowCar.onload= function(){
-//     //         ctx.drawImage(yellowCar, 90, 420)
-//     //     }
-//     // yellowCar.src= "images/yellowcar.png"
 
-//     let blueCar = new Image()
-//         blueCar.onload= function(){
-//             ctx.drawImage(blueCar, 16, 200)
-//         }
-//     blueCar.src= "images/bluecar.png"
-
-//     let blackCar = new Image()
-//         blackCar.onload= function(){
-//             ctx.drawImage(blackCar, 172, 50, this.width, this.height)
-//         }
-//     blackCar.src= "images/blackcar.png"
-
-//     let redCar = new Image()
-//         redCar.onload= function(){
-//             ctx.drawImage(redCar, 240, 200, this.width, this.height)
-//         }
-//     redCar.src= "images/Redcar.png"
 
 //     ctx.clearRect(0,0,game.width, game.height)
    
@@ -318,10 +295,8 @@ document.addEventListener('DOMContentLoaded', function(){
 //         ctx.stroke()
 //         ctx.strokeStyle = 'white'
 //         ctx.lineDashOffset = -offset
-
-       
 // }
-   
+//    draw()
 
 //     function moveLine(){
 //         offset++
@@ -331,11 +306,19 @@ document.addEventListener('DOMContentLoaded', function(){
 //         draw()
 //      setTimeout(moveLine, 25)
 //     }
-
 //     moveLine()
-// // })
-
-
+    
+// })
+// function drawDashedLine(pattern) {
+//     ctx.beginPath();
+//     ctx.setLineDash(pattern);
+//     ctx.moveTo(0, y);
+//     ctx.lineTo(300, y);
+//     ctx.stroke();
+//     y += 20;
+//   }
+//   let y = 15;
+//   drawDashedLine([10, 10]);
 
 
 const detectHit = () => {
