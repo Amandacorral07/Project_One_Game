@@ -27,7 +27,7 @@ class YellowCar{
         // this.friction = 0.9,
         this.alive = true,
         // this.pattern= pattern
-        this.speed = 15,
+        this.speed = 5,
         this.direction = {
             left: false,
             right: false
@@ -38,17 +38,23 @@ class YellowCar{
         // if (key.toLowerCase() == 'w') { this.direction.up = true }
         // if (key.keyCode == 37) { this.direction.left = true }
         if (key.toLowerCase() == 'a') { this.direction.left = true }
+        console.log(this.x)
+        console.log(yellowCar.x)
+        requestAnimationFrame(gameLoop,120)
         // if (key.toLowerCase() == 's') { this.direction.down = true }
         if (key.toLowerCase() == 'd') { this.direction.right = true }
+        requestAnimationFrame(gameLoop,120)
         // if (key.keyCode == 39) { this.direction.right = true }
     }
     unSetDirection = function (key) {
         console.log('this is the key that was pressed', key)
         // if (key.toLowerCase() == 'w') { this.direction.up = false }
         if (key.toLowerCase() == 'a') { this.direction.left = false }
+        // requestAnimationFrame(gameLoop,60)
         // if (key.keyCode == 37) { this.direction.left = false }
         // if (key.toLowerCase() == 's') { this.direction.down = false }
         if (key.toLowerCase() == 'd') { this.direction.right = false }
+        // requestAnimationFrame(gameLoop,60)
         // if (key.keyCode == 39) { this.direction.right = false }
     }
     moveYellowCar = function () {
@@ -58,7 +64,7 @@ class YellowCar{
         if (this.x <= 0) {
             this.x = 0
         }
-        requestAnimationFrame(gameLoop)
+        // requestAnimationFrame(gameLoop)
     }
     if (this.direction.right) {
         this.x += this.speed
@@ -66,7 +72,7 @@ class YellowCar{
         if (this.x + this.width >= game.width) {
             this.x = game.width - this.width
         }
-        requestAnimationFrame(gameLoop)
+        // requestAnimationFrame(gameLoop)
     }
     
 }
@@ -76,10 +82,13 @@ class YellowCar{
             yellowCar.src= "images/yellowcar.png"
             yellowCar.onload=()=>{
                 ctx.drawImage(yellowCar, this.x, this.y)
+                
         }
 }
 
 }
+
+
 
 class BlueCar{
     constructor(x, y, width, height){
@@ -142,16 +151,17 @@ class RedCar{
 const randomCarY = (max) => {
     return Math.floor(Math.random() * max)
 }
-const randomCarX =() =>{
-    let randomCarArray = [16,90,172,240]
-    for (let i=0; i<randomCarArray.length; i++){
-        randomCarArray.push(Math.random)
-    }
-    
-}
-// return [i]Math.floor(Math.random() * max)
 
-let yellowCar= new YellowCar(90,420,40,60)
+const randomCarX= () =>{
+    let randomCarArray = [16,90,172,240] 
+    console.log('array working')
+    return randomCarArray[(Math.floor(Math.random()*4))] 
+
+    // return Math.floor((Math.random() * randomCarArray.length))
+    }
+
+
+let yellowCar= new YellowCar(100,420,40,60)
 
 let blueCar = new BlueCar(randomCarX(game.width),randomCarY(game.height),40,60)
 
@@ -192,18 +202,18 @@ const gameLoop = () => {
     // if the simpsons car is deceased, the game will end 
     ctx.clearRect(0,0,game.width, game.height)
 
-    
     blueCar.render()
     blackCar.render()
     redCar.render()
 
-
     yellowCar.render() 
     yellowCar.moveYellowCar()
+    
 
-   
+
+
 }
-
+console.log(yellowCar.x)
 // const movementHandler = (e) =>{
 //     // left=37, right=39
 //     switch (e.keyCode){
@@ -227,24 +237,12 @@ const gameLoop = () => {
 // }
 
 
-document.addEventListener('DOMContentLoaded', function(){
-    requestAnimationFrame(gameLoop,60)
-    //in here, we need to have our movement handler
-    // document.addEventListener('keydown', movementHandler)
 
-
-    
-    // we also need our game loop running at an interval 
-    
-    // setInterval(gameLoop, 10)
-    
-
-})
 // setInterval(gameLoop, 10)
 // requestAnimationFrame(gameLoop,60)
 // document.addEventListener('click', function(){
     // (e.keyCode)=true
-    let offset =0
+    // let offset =0
 // repeating roadlines
 
 document.addEventListener('keydown', (e) => {
@@ -256,9 +254,15 @@ document.addEventListener('keydown', (e) => {
 document.addEventListener('keyup', (e) => {
     // this one will look a lil different than keydown
     // we need to make sure it only applies to the keys we listed in unSetDirection
-    if ([37,39].includes(e.key)) {
+    if (['a','d'].includes(e.key)) {
         yellowCar.unSetDirection(e.key)
     }
+})
+document.addEventListener('DOMContentLoaded', function(){
+    requestAnimationFrame(gameLoop,120)
+    // setInterval(gameLoop,10)
+    //in here, we need to have our movement handler
+    // document.addEventListener('keydown', movementHandler)
 })
 
 // function draw(){
