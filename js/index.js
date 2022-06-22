@@ -1,9 +1,3 @@
-// const game = document.getElementById('canvas')
-// const movement = document.getElementById('movement')
-
-
-
-// function main (){
 const game = document.getElementById('canvas')
 
 const ctx = game.getContext('2d')
@@ -23,65 +17,147 @@ console.log('this is the canvas height', game.height)
 //     }
 // }
 
-class Cars{
+class YellowCar{
     constructor(x, y, width, height){
         this.x = x,
         this.y = y,
         this.height= height,
         this.width = width,
         // this.velocityX =0,
-        // this.speed = 30,
         // this.friction = 0.9,
-        this.alive = true
+        this.alive = true,
         // this.pattern= pattern
-        this.render= function(){
-            const yellowCar = new Image()
-                yellowCar.src= "images/yellowcar.png"
-                yellowCar.onload=()=>{
-                    ctx.drawImage(yellowCar, this.x, this.y)
-                }
-            // image.src="images/yellowcar.png"
-            // const pattern =ctx.createPattern(yellowCar,"no-repeat")
-            // ctx.fillStyle =pattern
-            // ctx.fillRect(0,0,300,300)
-            // ctx.fillStyle= this.image
-            // ctx.fillRect(this.x, this.y, this.width, this.height)
+        this.speed = 15,
+        this.direction = {
+            left: false,
+            right: false
         }
     }
-
+    setDirection = function (key) {
+        console.log('this is the key that was pressed', key)
+        // if (key.toLowerCase() == 'w') { this.direction.up = true }
+        // if (key.keyCode == 37) { this.direction.left = true }
+        if (key.toLowerCase() == 'a') { this.direction.left = true }
+        // if (key.toLowerCase() == 's') { this.direction.down = true }
+        if (key.toLowerCase() == 'd') { this.direction.right = true }
+        // if (key.keyCode == 39) { this.direction.right = true }
+    }
+    unSetDirection = function (key) {
+        console.log('this is the key that was pressed', key)
+        // if (key.toLowerCase() == 'w') { this.direction.up = false }
+        if (key.toLowerCase() == 'a') { this.direction.left = false }
+        // if (key.keyCode == 37) { this.direction.left = false }
+        // if (key.toLowerCase() == 's') { this.direction.down = false }
+        if (key.toLowerCase() == 'd') { this.direction.right = false }
+        // if (key.keyCode == 39) { this.direction.right = false }
+    }
+    moveYellowCar = function () {
+    if (this.direction.left) {
+        this.x -= this.speed
+    
+        if (this.x <= 0) {
+            this.x = 0
+        }
+        requestAnimationFrame(gameLoop)
+    }
+    if (this.direction.right) {
+        this.x += this.speed
+        
+        if (this.x + this.width >= game.width) {
+            this.x = game.width - this.width
+        }
+        requestAnimationFrame(gameLoop)
+    }
     
 }
-const yellowCar= new Cars(90,420,40,60)
-// let yellowCar = "images/yellowcar.png"
-// let yellowCar = new Image()
-// yellowCar.src= "images/yellowcar.png"
-// yellowCar.onload=function(){
-//     ctx.drawImage(yellowCar,this.x, this.y)
-// }
-//     const pattern =ctx.createPattern(yellowCar,"no-repeat")
-//     ctx.fillStyle =pattern
-//     ctx.fillRect(0,0,300,300)
-// }
-// document.onkeydown=function(e){
-//     pos++
-//     key-window.event?e.keyCode:e.which
-// }
-// let blueCar= new Cars(80, 200,"images/bluecar.png")
 
+    render= function(){
+        const yellowCar = new Image()
+            yellowCar.src= "images/yellowcar.png"
+            yellowCar.onload=()=>{
+                ctx.drawImage(yellowCar, this.x, this.y)
+        }
+}
 
-// movement(x,y) {
-    //     this.x = x
-    //     this.y= y
-    // }
+}
 
-    // draw(){
-    //     ctx.drawImage(yellowCar, 30, 40)
-    //     ctx.drawImage(blueCar, this.x, this.y, this.width, this.height)
-    //     ctx.drawImage(blackCar, this.x, this.y, this.width, this.height)
-    //     ctx.drawImage(redCar, this.x, this.y, this.width, this.height)
-    // }
+class BlueCar{
+    constructor(x, y, width, height){
+        this.x = x,
+        this.y = y,
+        this.height= height,
+        this.width = width,
+        // this.velocityX =0,
+        this.speed = 15
+        // this.friction = 0.9,
+        this.alive = true
+        this.render= function(){
+            const blueCar = new Image()
+                blueCar.src= "images/bluecar.png"
+                blueCar.onload=()=>{
+                    ctx.drawImage(blueCar, this.x, this.y)
+                }
+        }
+    } 
+}
 
-// }
+class BlackCar{
+    constructor(x, y, width, height){
+        this.x = x,
+        this.y = y,
+        this.height= height,
+        this.width = width,
+        // this.velocityX =0,
+        this.speed = 15,
+        // this.friction = 0.9,
+        this.alive = true
+        this.render= function(){
+            const blackCar = new Image()
+                blackCar.src= "images/blackcar.png"
+                blackCar.onload=()=>{
+                    ctx.drawImage(blackCar, this.x, this.y)
+                }
+        }
+    } 
+}
+class RedCar{
+    constructor(x, y, width, height){
+        this.x = x,
+        this.y = y,
+        this.height= height,
+        this.width = width,
+        // this.velocityX =0,
+        this.speed = 15,
+        // this.friction = 0.9,
+        this.alive = true
+        this.render= function(){
+            const redCar = new Image()
+                redCar.src= "images/redcar.png"
+                redCar.onload=()=>{
+                    ctx.drawImage(redCar, this.x, this.y)
+                }
+        }
+    } 
+}
+const randomCarY = (max) => {
+    return Math.floor(Math.random() * max)
+}
+const randomCarX =() =>{
+    let randomCarArray = [16,90,172,240]
+    for (let i=0; i<randomCarArray.length; i++){
+        randomCarArray.push(Math.random)
+    }
+    
+}
+// return [i]Math.floor(Math.random() * max)
+
+let yellowCar= new YellowCar(90,420,40,60)
+
+let blueCar = new BlueCar(randomCarX(game.width),randomCarY(game.height),40,60)
+
+let blackCar = new BlackCar(randomCarX(game.width),randomCarY(game.height),40,60)
+
+let redCar = new RedCar(randomCarX(game.width),randomCarY(game.height),40,60)
 
 // need to create loop to randomize cars moving through
 //seperate bewtween each each must be at least 150 for y and 50 for x
@@ -91,180 +167,171 @@ const yellowCar= new Cars(90,420,40,60)
 // third row- 172
 // fourth row- 240
 
-// let yellowCar = new Image()
-// yellowCar.onload= function(){
-//     ctx.drawImage(yellowCar, 90, 420)
-// }
 
 
-// function init(){
-    // yellowCar.src= "images/yellowcar.png"
-    
-    
-    
-//     window.requestAnimationFrame(draw)
-// }
+// let gameSpeed = 3;
+
+// setInterval(() => {
+//   gameSpeed += 1;
+//   if (gameSpeed > 9) {
+//     gameSpeed = 9;
+//   }
+// }, 5000);
 
 
-// ctx.width = game.width
-// ctx.height = game.height
 
-// ctx.fillStyle='black'
-// ctx.strokeStyle= 'red'
-// ctx.lineWidth =5
-
-// ctx.fillRect(0,0,20,20)
-// ctx.strokeStyle(0,0,20,20)
-
-
-// function draw(){
-
-//     ctx.clearRect(0,0,300,300)
-//     // ctx.save()
-//     ctx.drawImage(yellowCar, 2, 5)
-//     ctx.drawImage(yellowCar, 30, 50)
-//     ctx.drawImage(yellowCar, 30, 50)
-//     ctx.drawImage(yellowCar, 30, 50)
-
-//     window.requestAnimationFrame(draw)
-// }
-
-// let redCar = new Cars (10,10,'red', 16, 16)
-// let blueCar = new Cars (200, 50, 'blue', 32, 48)
 
 //The gameLoop function will be what helps us create an animation effect 
 //it also allows us to say what happens when and control those events to our liking
 //this is how we utilize movement
 
 const gameLoop = () => {
+    
     // the 'win'condition of our game is to get to Dodger statdium 
     // if the simpsons car is still alive, then the game will continue 
     // if the simpsons car is deceased, the game will end 
-    // if (blueCar.alive){
-    //     detectHit()
-    // }
-    // } else if (blackCar.alive){
-    //     detectHit()
-    // }
-    //we need to rend both of our objects, and we'll use their respective render methods to do this
-    // we will also, update our movement box with the coordinates of our player
-    // and to create the illusion of movement, we need to clear the canvas every single 'frame' so that our hero's movement doesnt turn him into a snake.
     ctx.clearRect(0,0,game.width, game.height)
-    // movement.textContent = yellowCar.x + ' , ' + yellowCar.y
-    yellowCar.render()
 
-    // if (blueCar.alive){
-    //     blueCar.render()
-    // }
+    
+    blueCar.render()
+    blackCar.render()
+    redCar.render()
+
+
+    yellowCar.render() 
+    yellowCar.moveYellowCar()
+
+   
 }
 
+// const movementHandler = (e) =>{
+//     // left=37, right=39
+//     switch (e.keyCode){
+//         case (37): 
+//         // this moves the player to the left
+//             yellowCar.x -= 10
+//             break 
+//         case (39): 
+//             yellowCar.x += 10
+//             break
+//         case (40): 
+//             // this moves the player to the left
+//             yellowCar.y += 10
+//             break 
+//         case (38): 
+//         // this moves the player to the left
+//             yellowCar.y -= 10
+//             break 
+        
+//     }
+// }
+
+
 document.addEventListener('DOMContentLoaded', function(){
+    requestAnimationFrame(gameLoop,60)
     //in here, we need to have our movement handler
-    document.addEventListener('keydown', movementHandler)
+    // document.addEventListener('keydown', movementHandler)
 
 
     
     // we also need our game loop running at an interval 
-    setInterval(gameLoop, 10)
+    
+    // setInterval(gameLoop, 10)
+    
+
 })
+// setInterval(gameLoop, 10)
+// requestAnimationFrame(gameLoop,60)
 // document.addEventListener('click', function(){
     // (e.keyCode)=true
     let offset =0
 // repeating roadlines
 
+document.addEventListener('keydown', (e) => {
+    // when the key is down, set the direction according to our
+    // player.setDirection method
+    yellowCar.setDirection(e.key)
+})
 
+document.addEventListener('keyup', (e) => {
+    // this one will look a lil different than keydown
+    // we need to make sure it only applies to the keys we listed in unSetDirection
+    if ([37,39].includes(e.key)) {
+        yellowCar.unSetDirection(e.key)
+    }
+})
 
-function draw(){
-    // let yellowCar = new Image()
-    //     yellowCar.onload= function(){
-    //         ctx.drawImage(yellowCar, 90, 420)
-    //     }
-    // yellowCar.src= "images/yellowcar.png"
+// function draw(){
+//     // let yellowCar = new Image()
+//     //     yellowCar.onload= function(){
+//     //         ctx.drawImage(yellowCar, 90, 420)
+//     //     }
+//     // yellowCar.src= "images/yellowcar.png"
 
-    let blueCar = new Image()
-        blueCar.onload= function(){
-            ctx.drawImage(blueCar, 16, 200)
-        }
-    blueCar.src= "images/bluecar.png"
+//     let blueCar = new Image()
+//         blueCar.onload= function(){
+//             ctx.drawImage(blueCar, 16, 200)
+//         }
+//     blueCar.src= "images/bluecar.png"
 
-    let blackCar = new Image()
-        blackCar.onload= function(){
-            ctx.drawImage(blackCar, 172, 50, this.width, this.height)
-        }
-    blackCar.src= "images/blackcar.png"
+//     let blackCar = new Image()
+//         blackCar.onload= function(){
+//             ctx.drawImage(blackCar, 172, 50, this.width, this.height)
+//         }
+//     blackCar.src= "images/blackcar.png"
 
-    let redCar = new Image()
-        redCar.onload= function(){
-            ctx.drawImage(redCar, 240, 200, this.width, this.height)
-        }
-    redCar.src= "images/Redcar.png"
+//     let redCar = new Image()
+//         redCar.onload= function(){
+//             ctx.drawImage(redCar, 240, 200, this.width, this.height)
+//         }
+//     redCar.src= "images/Redcar.png"
 
-    ctx.clearRect(0,0,game.width, game.height)
+//     ctx.clearRect(0,0,game.width, game.height)
    
-        ctx.beginPath()
-        ctx.setLineDash([4,16])
-        ctx.lineWidth =2
-        ctx.moveTo(65,0)
-        ctx.lineTo(65,500)
-        ctx.stroke()
-        ctx.strokeStyle = 'white'
-        ctx.lineDashOffset = -offset
+//         ctx.beginPath()
+//         ctx.setLineDash([4,16])
+//         ctx.lineWidth =2
+//         ctx.moveTo(65,0)
+//         ctx.lineTo(65,500)
+//         ctx.stroke()
+//         ctx.strokeStyle = 'white'
+//         ctx.lineDashOffset = -offset
     
-        ctx.beginPath()
-        ctx.setLineDash([4,16])
-        ctx.lineWidth =2
-        ctx.moveTo(150,0)
-        ctx.lineTo(150,500)
-        ctx.stroke()
-        ctx.strokeStyle = 'white'
-        ctx.lineDashOffset = -offset
+//         ctx.beginPath()
+//         ctx.setLineDash([4,16])
+//         ctx.lineWidth =2
+//         ctx.moveTo(150,0)
+//         ctx.lineTo(150,500)
+//         ctx.stroke()
+//         ctx.strokeStyle = 'white'
+//         ctx.lineDashOffset = -offset
    
-        ctx.beginPath()
-        ctx.setLineDash([4,16])
-        ctx.lineWidth =2
-        ctx.moveTo(230,0)
-        ctx.lineTo(230,500)
-        ctx.stroke()
-        ctx.strokeStyle = 'white'
-        ctx.lineDashOffset = -offset
+//         ctx.beginPath()
+//         ctx.setLineDash([4,16])
+//         ctx.lineWidth =2
+//         ctx.moveTo(230,0)
+//         ctx.lineTo(230,500)
+//         ctx.stroke()
+//         ctx.strokeStyle = 'white'
+//         ctx.lineDashOffset = -offset
 
        
-    }
+// }
    
 
-    function moveLine(){
-        offset++
-        if(offset >16){
-         offset=0
-        }
-        draw()
-     setTimeout(moveLine, 25)
-    }
+//     function moveLine(){
+//         offset++
+//         if(offset >16){
+//          offset=0
+//         }
+//         draw()
+//      setTimeout(moveLine, 25)
+//     }
 
-    moveLine()
-// })
+//     moveLine()
+// // })
 
-const movementHandler = (e) =>{
-    // left=37, right=39
-    switch (e.keyCode){
-        case (37): 
-        // this moves the player to the left
-            yellowCar.x -= 10
-            break 
-        case (39): 
-            yellowCar.x += 10
-            break
-        case (40): 
-            // this moves the player to the left
-            yellowCar.y += 10
-            break 
-        case (38): 
-        // this moves the player to the left
-            yellowCar.y -= 10
-            break 
-        
-    }
-}
+
 
 
 const detectHit = () => {
