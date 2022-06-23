@@ -147,7 +147,27 @@ class BlueCar3{
                 }
         }
     } 
+    update(){
+        ctx.clearRect(0,0,game.width, game.height)
+        this.render= function(){
+            const blueCar = new Image()
+                blueCar.src= "images/bluecar.png"
+                blueCar.onload=()=>{
+                    ctx.drawImage(blueCar, this.x, this.y)
+                }
+        }
+
+        if(RedCar4.y >= 90){
+            return this.y +=1
+            // this.speed
+        }
+        if (this.y >=480){
+            return this.y=0
+        }
+    }
 }
+
+
 class BlueCar4{
     constructor(x, y, width, height){
         this.x = x,
@@ -310,7 +330,7 @@ class RedCar4{
         this.height= height,
         this.width = width,
         // this.velocityX =0,
-        this.speed = 5,
+        this.speed = 20,
         // this.friction = 0.9,
         this.alive = true
         this.render= function(){
@@ -332,19 +352,22 @@ class RedCar4{
         //     this.y += this.dy
         // }
     } 
-    // update(){
-    //     ctx.clearRect(0,0,game.width, game.height)
-    //     this.render= function(){
-    //         const redCar = new Image()
-    //             redCar.src= "images/redcar.png"
-    //             redCar.onload=()=>{
-    //                 ctx.drawImage(redCar, this.x, this.y)
-    //             }
-    //     }
-    //     // this.x += this.dx
-    //     this.y += this.dy
-    //     // this.y+=1
-    // }
+    update(){
+        ctx.clearRect(0,0,game.width, game.height)
+        this.render= function(){
+            const redCar = new Image()
+                redCar.src= "images/redcar.png"
+                redCar.onload=()=>{
+                    ctx.drawImage(redCar, this.x, this.y)
+                }
+        }
+        this.y +=1
+
+        if (this.y >=480){
+            return this.y=0
+        }
+        // this.y+=1
+    }
     // loop(){
     //     this.update()
         
@@ -415,25 +438,39 @@ let randomCars = [
     [blackCar3],
     [redCar4]
 ]
+// grab the y of redCard4 and move it down lane 4 
+// create a pause after. Maybe use setTimeout or setInterval?
+// grab the y of blueCar 3 and move it down lane 3 
+
+//red car appears at the top
+// red car update function moves car down by grabbing y and adding 1
+//once red car get to the bottom send it back to the top
+//find a better way than a for loop maybe a forEach? to get car to reset at the top
+// once red card gets to 90px down the canvas call update function on blue car 
+//set different speed values to each car?
+
+//
+
+
 
 // let randoCars = randomCarArray()
 
-const randomCarArray=()=>{
-    let randoCars= randomCars[Math.floor(Math.random()*randomCars.length)]
+// const randomCarArray=()=>{
+//     let randoCars= randomCars[Math.floor(Math.random()*randomCars.length)]
     // console.log(randoCars)
     // randoCars.forEach(i.render())
-    for (let i=0; i<randoCars.length; i++){
-        randoCars[i].render()
-        randoCars[i].y +=1* randoCars[i].speed
+    // for (let i=0; i<randoCars.length; i++){
+    //     randoCars[i].render()
+        // randoCars[i].y +=10 
         // ctx.clearRect(0,0,game.width, game.height)
         // requestAnimationFrame(randomCarArray)
         // setInterval(randomCarArray,1000)
         // ctx.clearRect(0,0,game.width, game.height)
         // clearInterval(30000)
         // requestAnimationFrame(randomCarArray)
-    }
-    return randoCars
-}
+//     }
+//     return randoCars
+// }
 // const randoCars = randomCarArray()
 // console.log(randoCars)
 // console.log(randomCarArray())
@@ -485,8 +522,11 @@ const gameLoop = () => {
     ctx.clearRect(0,0,game.width, game.height)
 
     // update()
-    randomCarArray()
-    // redCar4.render()
+    // randomCarArray()
+    redCar4.render()
+    redCar4.update()
+    blueCar3.render()
+    blueCar3.update()
 
     yellowCar.render() 
     yellowCar.moveYellowCar()
