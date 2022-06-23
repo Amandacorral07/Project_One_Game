@@ -89,7 +89,64 @@ class YellowCar{
 
 
 
-class BlueCar{
+class BlueCar1{
+    constructor(x, y, width, height){
+        this.x = x,
+        this.y = y,
+        this.height= height,
+        this.width = width,
+        // this.velocityX =0,
+        this.speed = 15
+        // this.friction = 0.9,
+        this.alive = true
+        this.render= function(){
+            const blueCar = new Image()
+                blueCar.src= "images/bluecar.png"
+                blueCar.onload=()=>{
+                    ctx.drawImage(blueCar, this.x, this.y)
+                }
+        }
+    } 
+}
+class BlueCar2{
+    constructor(x, y, width, height){
+        this.x = x,
+        this.y = y,
+        this.height= height,
+        this.width = width,
+        // this.velocityX =0,
+        this.speed = 15
+        // this.friction = 0.9,
+        this.alive = true
+        this.render= function(){
+            const blueCar = new Image()
+                blueCar.src= "images/bluecar.png"
+                blueCar.onload=()=>{
+                    ctx.drawImage(blueCar, this.x, this.y)
+                }
+        }
+    } 
+}
+class BlueCar3{
+    constructor(x, y, width, height){
+        this.x = x,
+        this.y = y,
+        this.height= height,
+        this.width = width,
+        // this.velocityX =0,
+        this.speed = 15
+        // this.friction = 0.9,
+        this.alive = true
+        this.render= function(){
+            const blueCar = new Image()
+                blueCar.src= "images/bluecar.png"
+                blueCar.onload=()=>{
+                    ctx.drawImage(blueCar, this.x, this.y)
+                }
+        }
+    } 
+}
+class BlueCar4{
     constructor(x, y, width, height){
         this.x = x,
         this.y = y,
@@ -109,7 +166,7 @@ class BlueCar{
     } 
 }
 
-class BlackCar{
+class BlackCar1{
     constructor(x, y, width, height){
         this.x = x,
         this.y = y,
@@ -128,7 +185,64 @@ class BlackCar{
         }
     } 
 }
-class RedCar{
+class BlackCar2{
+    constructor(x, y, width, height){
+        this.x = x,
+        this.y = y,
+        this.height= height,
+        this.width = width,
+        // this.velocityX =0,
+        this.speed = 15,
+        // this.friction = 0.9,
+        this.alive = true
+        this.render= function(){
+            const blackCar = new Image()
+                blackCar.src= "images/blackcar.png"
+                blackCar.onload=()=>{
+                    ctx.drawImage(blackCar, this.x, this.y)
+                }
+        }
+    } 
+}
+class BlackCar3{
+    constructor(x, y, width, height){
+        this.x = x,
+        this.y = y,
+        this.height= height,
+        this.width = width,
+        // this.velocityX =0,
+        this.speed = 15,
+        // this.friction = 0.9,
+        this.alive = true
+        this.render= function(){
+            const blackCar = new Image()
+                blackCar.src= "images/blackcar.png"
+                blackCar.onload=()=>{
+                    ctx.drawImage(blackCar, this.x, this.y)
+                }
+        }
+    } 
+}
+class BlackCar4{
+    constructor(x, y, width, height){
+        this.x = x,
+        this.y = y,
+        this.height= height,
+        this.width = width,
+        // this.velocityX =0,
+        this.speed = 15,
+        // this.friction = 0.9,
+        this.alive = true
+        this.render= function(){
+            const blackCar = new Image()
+                blackCar.src= "images/blackcar.png"
+                blackCar.onload=()=>{
+                    ctx.drawImage(blackCar, this.x, this.y)
+                }
+        }
+    } 
+}
+class RedCar1{
     constructor(x, y, width, height){
         this.x = x,
         this.y = y,
@@ -147,36 +261,153 @@ class RedCar{
         }
     } 
 }
-const randomCarY = (max) => {
-    return Math.floor(Math.random() * max)
+class RedCar2{
+    constructor(x, y, width, height){
+        this.x = x,
+        this.y = y,
+        this.height= height,
+        this.width = width,
+        // this.velocityX =0,
+        this.speed = 15,
+        // this.friction = 0.9,
+        this.alive = true
+        this.render= function(){
+            const redCar = new Image()
+                redCar.src= "images/redcar.png"
+                redCar.onload=()=>{
+                    ctx.drawImage(redCar, this.x, this.y)
+                }
+        }
+    } 
 }
+class RedCar3{
+    constructor(x, y, width, height){
+        this.x = x,
+        this.y = y,
+        this.height= height,
+        this.width = width,
+        // this.velocityX =0,
+        this.speed = 15,
+        // this.friction = 0.9,
+        this.alive = true
+        this.render= function(){
+            const redCar = new Image()
+                redCar.src= "images/redcar.png"
+                redCar.onload=()=>{
+                    ctx.drawImage(redCar, this.x, this.y)
+                }
+        }
+    } 
+}
+class RedCar4{
+    constructor(x, y, width, height){
+        this.x = x,
+        this.y = y,
+        this.height= height,
+        this.width = width,
+        // this.velocityX =0,
+        this.speed = 15,
+        // this.friction = 0.9,
+        this.alive = true
+        this.render= function(){
+            const redCar = new Image()
+                redCar.src= "images/redcar.png"
+                redCar.onload=()=>{
+                    ctx.drawImage(redCar, this.x, this.y)
+                }
+        }
+    } 
+}
+// const randomCarY = (max) => {
+//     return Math.floor(Math.random() * max)
+// }
 
-const randomCarX= () =>{
-    let randomCarArray = [16,90,172,240] 
-    console.log('array working')
-    return randomCarArray[(Math.floor(Math.random()*4))] 
+// const randomCarX= () =>{
+//     let randomCarArray = [16,90,172,240] 
+//     console.log('array working')
+//     return randomCarArray[(Math.floor(Math.random()*4))] 
 
     // return Math.floor((Math.random() * randomCarArray.length))
-    }
+    // }
+
+    
+    //
+
+
+
 
 
 let yellowCar= new YellowCar(100,420,40,60)
+//lane1=16
+//lane2=90
+//lane3=172
+//lane4=240
+//seperate on the y axis by 90
 
-let blueCar = new BlueCar(randomCarX(game.width),randomCarY(game.height),40,60)
+let blueCar1 = new BlueCar1(16,0,40,60)
+let blueCar2= new BlueCar2(90,90,40,60)
+let blueCar3= new BlueCar3(172,180, 40, 60)
+let blueCar4= new BlueCar4(240,270,40,60)
 
-let blackCar = new BlackCar(randomCarX(game.width),randomCarY(game.height),40,60)
+let blackCar1 = new BlackCar1(16, 90,40,60)
+let blackCar2= new BlackCar2(90,180,40,60)
+let blackCar3= new BlackCar3(172,270, 40, 60)
+let blackCar4= new BlackCar4(240,360,40,60)
 
-let redCar = new RedCar(randomCarX(game.width),randomCarY(game.height),40,60)
-
-// need to create loop to randomize cars moving through
-//seperate bewtween each each must be at least 150 for y and 50 for x
-// x to get car in the middle: 
-// first row-16
-//  second row- 90
-// third row- 172
-// fourth row- 240
+let redCar1 = new RedCar1(16,180,40,60)
+let redCar2= new RedCar2(90,270,40,60)
+let redCar3= new RedCar3(172,360, 40, 60)
+let redCar4= new RedCar4(240,450,40,60)
 
 
+// const arrayOne = [blueCar2, blackCar3]
+// const arrayTwo = [redCar1,blackCar2, blueCar4]
+// const arrayThree= [blueCar1, blackCar2 , redCar3]
+// const arrayFour=[blueCar1, redCar3, blackCar4]
+// const arrayFive=[blackCar2, redCar3, blueCar4]
+// const arraySix=[blackCar1, blueCar2]
+// const arraySeven=[redCar3, blackCar4]
+// const arrayEight=[redCar2, blueCar4]
+// const arrayNine=[redCar1, blackCar3]
+// const arrayTen=[blackCar1, blueCar4]
+// const arrayEleven=[blueCar1]
+// const arrayTwelve=[redCar2]
+// const arrayThirteen=[blackCar3]
+// const arrayFourteen=[redCar4]
+
+let randomCars = [
+    [blueCar2, blackCar3],
+    [redCar1,blackCar2, blueCar4],
+    [blueCar1, blackCar2 , redCar3],
+    [blueCar1, redCar3, blackCar4],
+    [blackCar2, redCar3, blueCar4],
+    [blackCar1, blueCar2],
+    [redCar3, blackCar4],
+    [redCar2, blueCar4],
+    [redCar1, blackCar3],
+    [blackCar1, blueCar4],
+    [blueCar1],
+    [redCar2],
+    [blackCar3],
+    [redCar4]
+]
+
+const randomCarArray=()=>{
+        return randomCars[Math.floor(Math.random()*randomCars.length)]
+}
+
+console.log(randomCarArray())
+console.log(randomCarArray())
+console.log(randomCarArray())
+console.log(randomCarArray())
+console.log(randomCarArray())
+console.log(randomCarArray())
+console.log(randomCarArray())
+console.log(randomCarArray())
+console.log(randomCarArray())
+console.log(randomCarArray())
+console.log(randomCarArray())
+console.log(randomCarArray())
 
 // let gameSpeed = 3;
 
@@ -201,15 +432,25 @@ const gameLoop = () => {
     // if the simpsons car is deceased, the game will end 
     ctx.clearRect(0,0,game.width, game.height)
 
-    blueCar.render()
-    blackCar.render()
-    redCar.render()
+    blueCar1.render()
+    blueCar2.render()
+    blueCar3.render()
+    blueCar4.render()
+
+    blackCar1.render()
+    blackCar2.render()
+    blackCar3.render()
+    blackCar4.render()
+
+    redCar1.render()
+    redCar2.render()
+    redCar3.render()
+    redCar4.render()
+
 
     yellowCar.render() 
     yellowCar.moveYellowCar()
     
-
-
 
 }
 console.log(yellowCar.x)
