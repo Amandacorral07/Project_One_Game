@@ -305,6 +305,8 @@ class RedCar4{
     constructor(x, y, width, height){
         this.x = x,
         this.y = y,
+        // this.dx = 1* this.speed,
+        // this.dy = 1* this.speed,
         this.height= height,
         this.width = width,
         // this.velocityX =0,
@@ -318,8 +320,45 @@ class RedCar4{
                     ctx.drawImage(redCar, this.x, this.y)
                 }
         }
+        // this.update= function(){
+        //     ctx.clearRect(0,0,game.width, game.height)
+        //     this.render= function(){
+        //         const redCar = new Image()
+        //             redCar.src= "images/redcar.png"
+        //             redCar.onload=()=>{
+        //                 ctx.drawImage(redCar, this.x, this.y)
+        //             }
+        //     }
+        //     this.y += this.dy
+        // }
     } 
+    // update(){
+    //     ctx.clearRect(0,0,game.width, game.height)
+    //     this.render= function(){
+    //         const redCar = new Image()
+    //             redCar.src= "images/redcar.png"
+    //             redCar.onload=()=>{
+    //                 ctx.drawImage(redCar, this.x, this.y)
+    //             }
+    //     }
+    //     // this.x += this.dx
+    //     this.y += this.dy
+    //     // this.y+=1
+    // }
+    // loop(){
+    //     this.update()
+        
+        
+    //     requestAnimationFrame(loop())
+    // }
 }
+
+
+// const redCar4Move = []
+// for (let i=0; i<5; i++){
+//     redCar4Move[i].update()
+//     redCar4Move[i].render()
+// }
 
 let yellowCar= new YellowCar(100,420,40,60)
 
@@ -336,9 +375,15 @@ let blackCar4= new BlackCar4(240,0,40,60)
 let redCar1 = new RedCar1(16,0,40,60)
 let redCar2= new RedCar2(90,0,40,60)
 let redCar3= new RedCar3(172,0, 40, 60)
+
+
 let redCar4= new RedCar4(240,0,40,60)
-
-
+// redCar4.render()
+// let updateRedCar4 = function(){
+//     // requestAnimationFrame(updateRedCar4)
+//     updateRedCar4.update()
+// }
+// updateRedCar4()
 // const arrayOne = [blueCar2, blackCar3]
 // const arrayTwo = [redCar1,blackCar2, blueCar4]
 // const arrayThree= [blueCar1, blackCar2 , redCar3]
@@ -371,22 +416,30 @@ let randomCars = [
     [redCar4]
 ]
 
-const randomCarArray=()=>{
-        return randomCars[Math.floor(Math.random()*randomCars.length)]
-}
+// let randoCars = randomCarArray()
 
-console.log(randomCarArray())
-console.log(randomCarArray())
-console.log(randomCarArray())
-console.log(randomCarArray())
-console.log(randomCarArray())
-console.log(randomCarArray())
-console.log(randomCarArray())
-console.log(randomCarArray())
-console.log(randomCarArray())
-console.log(randomCarArray())
-console.log(randomCarArray())
-console.log(randomCarArray())
+const randomCarArray=()=>{
+    let randoCars= randomCars[Math.floor(Math.random()*randomCars.length)]
+    // console.log(randoCars)
+    // randoCars.forEach(i.render())
+    for (let i=0; i<randoCars.length; i++){
+        randoCars[i].render()
+    }
+    return randoCars
+}
+const randoCars = randomCarArray()
+// console.log(randoCars)
+// console.log(randomCarArray())
+// console.log(randomCarArray())
+// console.log(randomCarArray())
+// console.log(randomCarArray())
+// console.log(randomCarArray())
+// console.log(randomCarArray())
+// console.log(randomCarArray())
+// console.log(randomCarArray())
+// console.log(randomCarArray())
+// console.log(randomCarArray())
+// console.log(randomCarArray())
 
 // let gameSpeed = 3;
 
@@ -398,11 +451,22 @@ console.log(randomCarArray())
 // }, 5000);
 
 
-
+// let updateRandomCarPos = function(){
+//     requestAnimationFrame(updateRandomCarPos)
+//     // update()
+//     // randoCars.update()
+// }
+// updateRandomCarPos()
 
 //The gameLoop function will be what helps us create an animation effect 
 //it also allows us to say what happens when and control those events to our liking
 //this is how we utilize movement
+function update(){
+    ctx.clearRect(0,0,game.width, game.height)
+    randoCars.forEach(this.y+=1)
+    // setInterval(update,2000)
+    // clearInterval(update)
+}
 
 const gameLoop = () => {
     
@@ -411,38 +475,45 @@ const gameLoop = () => {
     // if the simpsons car is deceased, the game will end 
     ctx.clearRect(0,0,game.width, game.height)
 
+    update()
+    
+    // redCar4.render()
+
     yellowCar.render() 
     yellowCar.moveYellowCar()
 
-    if(randomCarArray()===[blueCar2, blackCar3]){
-        blueCar2.render(), blueCar3.render()
-    } else if (randomCarArray()===[redCar1,blackCar2, blueCar4]){
-        return redCar1.render(),blackCar2.render(),blueCar4.render()
-    } else if (randomCarArray()===[blueCar1, blackCar2 , redCar3]){
-        return blueCar1.render(),blackCar2.render(),redCar3.render()
-    } else if (randomCarArray()===[blueCar1, redCar3, blackCar4]){
-        return blueCar1.render(),redCar3.render(), blackCar4.render()
-    } else if (randomCarArray()===[blackCar2, redCar3, blueCar4]){
-        return  blackCar2.render(),redCar3.render(),blueCar4.render()
-    } else if (randomCarArray()===[blackCar1, blueCar2]){
-        return  blackCar1.render(),blueCar2.render()
-    } else if (randomCarArray()===[redCar3, blackCar4]){
-        return redCar3.render(),blackCar4.render()
-    } else if (randomCarArray()===[redCar2, blueCar4]){
-        return redCar2.render(),blueCar4.render()
-    } else if (randomCarArray()===[redCar1, blackCar3]){
-        return redCar1.render(),blackCar3.render()
-    } else if (randomCarArray()===[blackCar1, blueCar4]){
-        return blackCar1.render(),blueCar4.render()
-    } else if (randomCarArray()===[blueCar1]){
-        return blueCar1.render()
-    }else if (randomCarArray()===[redCar2]){
-        return redCar2.render()
-    }else if (randomCarArray()===[blackCar3]){
-        return blackCar3.render()
-    }else {
-        return redCar4.render()
-    }
+    
+    // update()
+    // randoCars.render()
+    // if(randomCarArray()===[blueCar2, blackCar3]){
+    //     blueCar2.render(), blueCar3.render()
+    // } else if (randomCarArray()===[redCar1,blackCar2, blueCar4]){
+    //     return redCar1.render(),blackCar2.render(),blueCar4.render()
+    // } else if (randomCarArray()===[blueCar1, blackCar2 , redCar3]){
+    //     return blueCar1.render(),blackCar2.render(),redCar3.render()
+    // } else if (randomCarArray()===[blueCar1, redCar3, blackCar4]){
+    //     return blueCar1.render(),redCar3.render(), blackCar4.render()
+    // } else if (randomCarArray()===[blackCar2, redCar3, blueCar4]){
+    //     return  blackCar2.render(),redCar3.render(),blueCar4.render()
+    // } else if (randomCarArray()===[blackCar1, blueCar2]){
+    //     return  blackCar1.render(),blueCar2.render()
+    // } else if (randomCarArray()===[redCar3, blackCar4]){
+    //     return redCar3.render(),blackCar4.render()
+    // } else if (randomCarArray()===[redCar2, blueCar4]){
+    //     return redCar2.render(),blueCar4.render()
+    // } else if (randomCarArray()===[redCar1, blackCar3]){
+    //     return redCar1.render(),blackCar3.render()
+    // } else if (randomCarArray()===[blackCar1, blueCar4]){
+    //     return blackCar1.render(),blueCar4.render()
+    // } else if (randomCarArray()===[blueCar1]){
+    //     return blueCar1.render()
+    // }else if (randomCarArray()===[redCar2]){
+    //     return redCar2.render()
+    // }else if (randomCarArray()===[blackCar3]){
+    //     return blackCar3.render()
+    // }else {
+    //     return redCar4.render()
+    // }
       
     
 }
@@ -497,6 +568,12 @@ document.addEventListener('keydown', (e) => {
     // when the key is down, set the direction according to our
     // player.setDirection method
     yellowCar.setDirection(e.key)
+
+    // function moveRandomCars(){
+    //     ctx.beginPath()
+    //     ctx.
+    // }
+    // moveRandomCars()
 })
 
 document.addEventListener('keyup', (e) => {
@@ -508,7 +585,7 @@ document.addEventListener('keyup', (e) => {
 })
 document.addEventListener('DOMContentLoaded', function(){
     ctx.clearRect(0,0,game.width, game.height)
-    requestAnimationFrame(gameLoop,120)
+    requestAnimationFrame(gameLoop,60)
     // setInterval(gameLoop,10)
     //in here, we need to have our movement handler
     // document.addEventListener('keydown', movementHandler)
