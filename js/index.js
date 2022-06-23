@@ -98,7 +98,7 @@ class BlueCar1{
         this.height= height,
         this.width = width,
         // this.velocityX =0,
-        this.speed = 15
+        this.speed = 5,
         // this.friction = 0.9,
         this.alive = true
         this.render= function(){
@@ -117,7 +117,7 @@ class BlueCar2{
         this.height= height,
         this.width = width,
         // this.velocityX =0,
-        this.speed = 15
+        this.speed = 5,
         // this.friction = 0.9,
         this.alive = true
         this.render= function(){
@@ -136,7 +136,7 @@ class BlueCar3{
         this.height= height,
         this.width = width,
         // this.velocityX =0,
-        this.speed = 15
+        this.speed = 5,
         // this.friction = 0.9,
         this.alive = true
         this.render= function(){
@@ -155,7 +155,7 @@ class BlueCar4{
         this.height= height,
         this.width = width,
         // this.velocityX =0,
-        this.speed = 15
+        this.speed = 5,
         // this.friction = 0.9,
         this.alive = true
         this.render= function(){
@@ -175,7 +175,7 @@ class BlackCar1{
         this.height= height,
         this.width = width,
         // this.velocityX =0,
-        this.speed = 15,
+        this.speed = 5,
         // this.friction = 0.9,
         this.alive = true
         this.render= function(){
@@ -194,7 +194,7 @@ class BlackCar2{
         this.height= height,
         this.width = width,
         // this.velocityX =0,
-        this.speed = 15,
+        this.speed = 5,
         // this.friction = 0.9,
         this.alive = true
         this.render= function(){
@@ -213,7 +213,7 @@ class BlackCar3{
         this.height= height,
         this.width = width,
         // this.velocityX =0,
-        this.speed = 15,
+        this.speed = 5,
         // this.friction = 0.9,
         this.alive = true
         this.render= function(){
@@ -232,7 +232,7 @@ class BlackCar4{
         this.height= height,
         this.width = width,
         // this.velocityX =0,
-        this.speed = 15,
+        this.speed = 5,
         // this.friction = 0.9,
         this.alive = true
         this.render= function(){
@@ -251,7 +251,7 @@ class RedCar1{
         this.height= height,
         this.width = width,
         // this.velocityX =0,
-        this.speed = 15,
+        this.speed = 5,
         // this.friction = 0.9,
         this.alive = true
         this.render= function(){
@@ -270,7 +270,7 @@ class RedCar2{
         this.height= height,
         this.width = width,
         // this.velocityX =0,
-        this.speed = 15,
+        this.speed = 5,
         // this.friction = 0.9,
         this.alive = true
         this.render= function(){
@@ -289,7 +289,7 @@ class RedCar3{
         this.height= height,
         this.width = width,
         // this.velocityX =0,
-        this.speed = 15,
+        this.speed = 5,
         // this.friction = 0.9,
         this.alive = true
         this.render= function(){
@@ -310,7 +310,7 @@ class RedCar4{
         this.height= height,
         this.width = width,
         // this.velocityX =0,
-        this.speed = 15,
+        this.speed = 5,
         // this.friction = 0.9,
         this.alive = true
         this.render= function(){
@@ -424,10 +424,17 @@ const randomCarArray=()=>{
     // randoCars.forEach(i.render())
     for (let i=0; i<randoCars.length; i++){
         randoCars[i].render()
+        randoCars[i].y +=1* randoCars[i].speed
+        // ctx.clearRect(0,0,game.width, game.height)
+        // requestAnimationFrame(randomCarArray)
+        // setInterval(randomCarArray,1000)
+        // ctx.clearRect(0,0,game.width, game.height)
+        // clearInterval(30000)
+        // requestAnimationFrame(randomCarArray)
     }
     return randoCars
 }
-const randoCars = randomCarArray()
+// const randoCars = randomCarArray()
 // console.log(randoCars)
 // console.log(randomCarArray())
 // console.log(randomCarArray())
@@ -461,12 +468,14 @@ const randoCars = randomCarArray()
 //The gameLoop function will be what helps us create an animation effect 
 //it also allows us to say what happens when and control those events to our liking
 //this is how we utilize movement
-function update(){
-    ctx.clearRect(0,0,game.width, game.height)
-    randoCars.forEach(this.y+=1)
-    // setInterval(update,2000)
-    // clearInterval(update)
-}
+// function update(){
+//     ctx.clearRect(0,0,game.width, game.height)
+//     randomCarArray().forEach(randomCarArray.y+=1)
+//     // randoCars
+    
+//     // clearInterval(update)
+// }
+// requestAnimationFrame(update,60)
 
 const gameLoop = () => {
     
@@ -475,8 +484,8 @@ const gameLoop = () => {
     // if the simpsons car is deceased, the game will end 
     ctx.clearRect(0,0,game.width, game.height)
 
-    update()
-    
+    // update()
+    randomCarArray()
     // redCar4.render()
 
     yellowCar.render() 
