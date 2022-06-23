@@ -20,8 +20,8 @@ class YellowCar{
         this.y = y,
         this.height= height,
         this.width = width,
-        // this.velocityX =0,
-        // this.friction = 0.9,
+        this.velocityX =0,
+        this.friction = 0.9,
         this.alive = true,
         this.speed = 5,
         this.direction = {
@@ -33,41 +33,43 @@ class YellowCar{
     setDirection = function (key) {
         console.log('this is the key that was pressed', key)
         // if (key.toLowerCase() == 'w') { this.direction.up = true }
-        // if (key.keyCode == 37) { this.direction.left = true }
+        // if (key == 'ArrowLeft') { this.direction.left = true }
         if (key.toLowerCase() == 'a') { this.direction.left = true }
-        requestAnimationFrame(gameLoop,120)
+        ctx.clearRect(0,0,game.width, game.height)
+        requestAnimationFrame(gameLoop,60)
         // if (key.toLowerCase() == 's') { this.direction.down = true }
         if (key.toLowerCase() == 'd') { this.direction.right = true }
-        requestAnimationFrame(gameLoop,120)
-        // if (key.keyCode == 39) { this.direction.right = true }
+        ctx.clearRect(0,0,game.width, game.height)
+        // if (key == 'ArrowRight') { this.direction.right = true }
+        requestAnimationFrame(gameLoop,60)
     }
     unSetDirection = function (key) {
         console.log('this is the key that was pressed', key)
-        // if (key.toLowerCase() == 'w') { this.direction.up = false }
         if (key.toLowerCase() == 'a') { this.direction.left = false }
         // requestAnimationFrame(gameLoop,60)
-        if (key.keyCode == 37) { this.direction.left = false }
+        // if (key == 'ArrowLeft') { this.direction.left = false }
         // if (key.toLowerCase() == 's') { this.direction.down = false }
         if (key.toLowerCase() == 'd') { this.direction.right = false }
         // requestAnimationFrame(gameLoop,60)
-        // if (key.keyCode == 39) { this.direction.right = false }
+        // if (key == 'ArrowRight') { this.direction.right = false }
     }
     moveYellowCar = function () {
     if (this.direction.left) {
         this.x -= this.speed
-    
+        this.velocityX *= this.friction
+        this.x += this.velocityX
+
         if (this.x <= 0) {
             this.x = 0
         }
-        // requestAnimationFrame(gameLoop)
     }
     if (this.direction.right) {
         this.x += this.speed
-        
+        this.velocityX *= this.friction
+        this.x += this.velocityX
         if (this.x + this.width >= game.width) {
             this.x = game.width - this.width
         }
-        // requestAnimationFrame(gameLoop)
     }
     
 }
@@ -318,46 +320,23 @@ class RedCar4{
         }
     } 
 }
-// const randomCarY = (max) => {
-//     return Math.floor(Math.random() * max)
-// }
-
-// const randomCarX= () =>{
-//     let randomCarArray = [16,90,172,240] 
-//     console.log('array working')
-//     return randomCarArray[(Math.floor(Math.random()*4))] 
-
-    // return Math.floor((Math.random() * randomCarArray.length))
-    // }
-
-    
-    //
-
-
-
-
 
 let yellowCar= new YellowCar(100,420,40,60)
-//lane1=16
-//lane2=90
-//lane3=172
-//lane4=240
-//seperate on the y axis by 90
 
 let blueCar1 = new BlueCar1(16,0,40,60)
-let blueCar2= new BlueCar2(90,90,40,60)
-let blueCar3= new BlueCar3(172,180, 40, 60)
-let blueCar4= new BlueCar4(240,270,40,60)
+let blueCar2= new BlueCar2(90,0,40,60)
+let blueCar3= new BlueCar3(172,0, 40, 60)
+let blueCar4= new BlueCar4(240,0,40,60)
 
-let blackCar1 = new BlackCar1(16, 90,40,60)
-let blackCar2= new BlackCar2(90,180,40,60)
-let blackCar3= new BlackCar3(172,270, 40, 60)
-let blackCar4= new BlackCar4(240,360,40,60)
+let blackCar1 = new BlackCar1(16, 0,40,60)
+let blackCar2= new BlackCar2(90,0,40,60)
+let blackCar3= new BlackCar3(172,0, 40, 60)
+let blackCar4= new BlackCar4(240,0,40,60)
 
-let redCar1 = new RedCar1(16,180,40,60)
-let redCar2= new RedCar2(90,270,40,60)
-let redCar3= new RedCar3(172,360, 40, 60)
-let redCar4= new RedCar4(240,450,40,60)
+let redCar1 = new RedCar1(16,0,40,60)
+let redCar2= new RedCar2(90,0,40,60)
+let redCar3= new RedCar3(172,0, 40, 60)
+let redCar4= new RedCar4(240,0,40,60)
 
 
 // const arrayOne = [blueCar2, blackCar3]
@@ -432,28 +411,63 @@ const gameLoop = () => {
     // if the simpsons car is deceased, the game will end 
     ctx.clearRect(0,0,game.width, game.height)
 
-    blueCar1.render()
-    blueCar2.render()
-    blueCar3.render()
-    blueCar4.render()
-
-    blackCar1.render()
-    blackCar2.render()
-    blackCar3.render()
-    blackCar4.render()
-
-    redCar1.render()
-    redCar2.render()
-    redCar3.render()
-    redCar4.render()
-
-
     yellowCar.render() 
     yellowCar.moveYellowCar()
+
+    if(randomCarArray()===[blueCar2, blackCar3]){
+        blueCar2.render(), blueCar3.render()
+    } else if (randomCarArray()===[redCar1,blackCar2, blueCar4]){
+        return redCar1.render(),blackCar2.render(),blueCar4.render()
+    } else if (randomCarArray()===[blueCar1, blackCar2 , redCar3]){
+        return blueCar1.render(),blackCar2.render(),redCar3.render()
+    } else if (randomCarArray()===[blueCar1, redCar3, blackCar4]){
+        return blueCar1.render(),redCar3.render(), blackCar4.render()
+    } else if (randomCarArray()===[blackCar2, redCar3, blueCar4]){
+        return  blackCar2.render(),redCar3.render(),blueCar4.render()
+    } else if (randomCarArray()===[blackCar1, blueCar2]){
+        return  blackCar1.render(),blueCar2.render()
+    } else if (randomCarArray()===[redCar3, blackCar4]){
+        return redCar3.render(),blackCar4.render()
+    } else if (randomCarArray()===[redCar2, blueCar4]){
+        return redCar2.render(),blueCar4.render()
+    } else if (randomCarArray()===[redCar1, blackCar3]){
+        return redCar1.render(),blackCar3.render()
+    } else if (randomCarArray()===[blackCar1, blueCar4]){
+        return blackCar1.render(),blueCar4.render()
+    } else if (randomCarArray()===[blueCar1]){
+        return blueCar1.render()
+    }else if (randomCarArray()===[redCar2]){
+        return redCar2.render()
+    }else if (randomCarArray()===[blackCar3]){
+        return blackCar3.render()
+    }else {
+        return redCar4.render()
+    }
+      
+    
+}
+    
+    // blueCar1.render()
+    // blueCar2.render()
+    // blueCar3.render()
+    // blueCar4.render()
+
+    // blackCar1.render()
+    // blackCar2.render()
+    // blackCar3.render()
+    // blackCar4.render()
+
+    // redCar1.render()
+    // redCar2.render()
+    // redCar3.render()
+    // redCar4.render()
+
+
+    
     
 
-}
-console.log(yellowCar.x)
+
+
 // const movementHandler = (e) =>{
 //     // left=37, right=39
 //     switch (e.keyCode){
@@ -476,14 +490,8 @@ console.log(yellowCar.x)
 //     }
 // }
 
+  
 
-
-// setInterval(gameLoop, 10)
-// requestAnimationFrame(gameLoop,60)
-// document.addEventListener('click', function(){
-    // (e.keyCode)=true
-    let offset =0
-// repeating roadlines
 
 document.addEventListener('keydown', (e) => {
     // when the key is down, set the direction according to our
@@ -499,12 +507,14 @@ document.addEventListener('keyup', (e) => {
     }
 })
 document.addEventListener('DOMContentLoaded', function(){
+    ctx.clearRect(0,0,game.width, game.height)
     requestAnimationFrame(gameLoop,120)
     // setInterval(gameLoop,10)
     //in here, we need to have our movement handler
     // document.addEventListener('keydown', movementHandler)
 })
 
+// let offset =0
 // function draw(){
 
 
