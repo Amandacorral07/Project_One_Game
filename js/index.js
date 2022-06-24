@@ -91,44 +91,44 @@ class YellowCar{
 
 
 
-class BlueCar1{
-    constructor(x, y, width, height){
-        this.x = x,
-        this.y = y,
-        this.height= height,
-        this.width = width,
-        // this.velocityX =0,
-        this.speed = 5,
-        // this.friction = 0.9,
-        this.alive = true
-        this.render= function(){
-            const blueCar = new Image()
-                blueCar.src= "images/bluecar.png"
-                blueCar.onload=()=>{
-                    ctx.drawImage(blueCar, this.x, this.y)
-                }
-        }
-    } 
-}
-class BlueCar2{
-    constructor(x, y, width, height){
-        this.x = x,
-        this.y = y,
-        this.height= height,
-        this.width = width,
-        // this.velocityX =0,
-        this.speed = 5,
-        // this.friction = 0.9,
-        this.alive = true
-        this.render= function(){
-            const blueCar = new Image()
-                blueCar.src= "images/bluecar.png"
-                blueCar.onload=()=>{
-                    ctx.drawImage(blueCar, this.x, this.y)
-                }
-        }
-    } 
-}
+// class BlueCar1{
+//     constructor(x, y, width, height){
+//         this.x = x,
+//         this.y = y,
+//         this.height= height,
+//         this.width = width,
+//         // this.velocityX =0,
+//         this.speed = 5,
+//         // this.friction = 0.9,
+//         this.alive = true
+//         this.render= function(){
+//             const blueCar = new Image()
+//                 blueCar.src= "images/bluecar.png"
+//                 blueCar.onload=()=>{
+//                     ctx.drawImage(blueCar, this.x, this.y)
+//                 }
+//         }
+//     } 
+// }
+// class BlueCar2{
+//     constructor(x, y, width, height){
+//         this.x = x,
+//         this.y = y,
+//         this.height= height,
+//         this.width = width,
+//         // this.velocityX =0,
+//         this.speed = 5,
+//         // this.friction = 0.9,
+//         this.alive = true
+//         this.render= function(){
+//             const blueCar = new Image()
+//                 blueCar.src= "images/bluecar.png"
+//                 blueCar.onload=()=>{
+//                     ctx.drawImage(blueCar, this.x, this.y)
+//                 }
+//         }
+//     } 
+// }
 class BlueCar3{
     constructor(x, y, width, height){
         this.x = x,
@@ -168,159 +168,159 @@ class BlueCar3{
 }
 
 
-class BlueCar4{
-    constructor(x, y, width, height){
-        this.x = x,
-        this.y = y,
-        this.height= height,
-        this.width = width,
-        // this.velocityX =0,
-        this.speed = 5,
-        // this.friction = 0.9,
-        this.alive = true
-        this.render= function(){
-            const blueCar = new Image()
-                blueCar.src= "images/bluecar.png"
-                blueCar.onload=()=>{
-                    ctx.drawImage(blueCar, this.x, this.y)
-                }
-        }
-    } 
-}
+// class BlueCar4{
+//     constructor(x, y, width, height){
+//         this.x = x,
+//         this.y = y,
+//         this.height= height,
+//         this.width = width,
+//         // this.velocityX =0,
+//         this.speed = 5,
+//         // this.friction = 0.9,
+//         this.alive = true
+//         this.render= function(){
+//             const blueCar = new Image()
+//                 blueCar.src= "images/bluecar.png"
+//                 blueCar.onload=()=>{
+//                     ctx.drawImage(blueCar, this.x, this.y)
+//                 }
+//         }
+//     } 
+// }
 
-class BlackCar1{
-    constructor(x, y, width, height){
-        this.x = x,
-        this.y = y,
-        this.height= height,
-        this.width = width,
-        // this.velocityX =0,
-        this.speed = 5,
-        // this.friction = 0.9,
-        this.alive = true
-        this.render= function(){
-            const blackCar = new Image()
-                blackCar.src= "images/blackcar.png"
-                blackCar.onload=()=>{
-                    ctx.drawImage(blackCar, this.x, this.y)
-                }
-        }
-    } 
-}
-class BlackCar2{
-    constructor(x, y, width, height){
-        this.x = x,
-        this.y = y,
-        this.height= height,
-        this.width = width,
-        // this.velocityX =0,
-        this.speed = 5,
-        // this.friction = 0.9,
-        this.alive = true
-        this.render= function(){
-            const blackCar = new Image()
-                blackCar.src= "images/blackcar.png"
-                blackCar.onload=()=>{
-                    ctx.drawImage(blackCar, this.x, this.y)
-                }
-        }
-    } 
-}
-class BlackCar3{
-    constructor(x, y, width, height){
-        this.x = x,
-        this.y = y,
-        this.height= height,
-        this.width = width,
-        // this.velocityX =0,
-        this.speed = 5,
-        // this.friction = 0.9,
-        this.alive = true
-        this.render= function(){
-            const blackCar = new Image()
-                blackCar.src= "images/blackcar.png"
-                blackCar.onload=()=>{
-                    ctx.drawImage(blackCar, this.x, this.y)
-                }
-        }
-    } 
-}
-class BlackCar4{
-    constructor(x, y, width, height){
-        this.x = x,
-        this.y = y,
-        this.height= height,
-        this.width = width,
-        // this.velocityX =0,
-        this.speed = 5,
-        // this.friction = 0.9,
-        this.alive = true
-        this.render= function(){
-            const blackCar = new Image()
-                blackCar.src= "images/blackcar.png"
-                blackCar.onload=()=>{
-                    ctx.drawImage(blackCar, this.x, this.y)
-                }
-        }
-    } 
-}
-class RedCar1{
-    constructor(x, y, width, height){
-        this.x = x,
-        this.y = y,
-        this.height= height,
-        this.width = width,
-        // this.velocityX =0,
-        this.speed = 5,
-        // this.friction = 0.9,
-        this.alive = true
-        this.render= function(){
-            const redCar = new Image()
-                redCar.src= "images/redcar.png"
-                redCar.onload=()=>{
-                    ctx.drawImage(redCar, this.x, this.y)
-                }
-        }
-    } 
-}
-class RedCar2{
-    constructor(x, y, width, height){
-        this.x = x,
-        this.y = y,
-        this.height= height,
-        this.width = width,
-        // this.velocityX =0,
-        this.speed = 5,
-        // this.friction = 0.9,
-        this.alive = true
-        this.render= function(){
-            const redCar = new Image()
-                redCar.src= "images/redcar.png"
-                redCar.onload=()=>{
-                    ctx.drawImage(redCar, this.x, this.y)
-                }
-        }
-    } 
-}
-class RedCar3{
-    constructor(x, y, width, height){
-        this.x = x,
-        this.y = y,
-        this.height= height,
-        this.width = width,
-        // this.velocityX =0,
-        this.speed = 5,
-        // this.friction = 0.9,
-        this.alive = true
-        this.render= function(){
-            const redCar = new Image()
-                redCar.src= "images/redcar.png"
-                redCar.onload=()=>{
-                    ctx.drawImage(redCar, this.x, this.y)
-                }
-        }
-    } 
-}
+// class BlackCar1{
+//     constructor(x, y, width, height){
+//         this.x = x,
+//         this.y = y,
+//         this.height= height,
+//         this.width = width,
+//         // this.velocityX =0,
+//         this.speed = 5,
+//         // this.friction = 0.9,
+//         this.alive = true
+//         this.render= function(){
+//             const blackCar = new Image()
+//                 blackCar.src= "images/blackcar.png"
+//                 blackCar.onload=()=>{
+//                     ctx.drawImage(blackCar, this.x, this.y)
+//                 }
+//         }
+//     } 
+// }
+// class BlackCar2{
+//     constructor(x, y, width, height){
+//         this.x = x,
+//         this.y = y,
+//         this.height= height,
+//         this.width = width,
+//         // this.velocityX =0,
+//         this.speed = 5,
+//         // this.friction = 0.9,
+//         this.alive = true
+//         this.render= function(){
+//             const blackCar = new Image()
+//                 blackCar.src= "images/blackcar.png"
+//                 blackCar.onload=()=>{
+//                     ctx.drawImage(blackCar, this.x, this.y)
+//                 }
+//         }
+//     } 
+// }
+// class BlackCar3{
+//     constructor(x, y, width, height){
+//         this.x = x,
+//         this.y = y,
+//         this.height= height,
+//         this.width = width,
+//         // this.velocityX =0,
+//         this.speed = 5,
+//         // this.friction = 0.9,
+//         this.alive = true
+//         this.render= function(){
+//             const blackCar = new Image()
+//                 blackCar.src= "images/blackcar.png"
+//                 blackCar.onload=()=>{
+//                     ctx.drawImage(blackCar, this.x, this.y)
+//                 }
+//         }
+//     } 
+// }
+// class BlackCar4{
+//     constructor(x, y, width, height){
+//         this.x = x,
+//         this.y = y,
+//         this.height= height,
+//         this.width = width,
+//         // this.velocityX =0,
+//         this.speed = 5,
+//         // this.friction = 0.9,
+//         this.alive = true
+//         this.render= function(){
+//             const blackCar = new Image()
+//                 blackCar.src= "images/blackcar.png"
+//                 blackCar.onload=()=>{
+//                     ctx.drawImage(blackCar, this.x, this.y)
+//                 }
+//         }
+//     } 
+// }
+// class RedCar1{
+//     constructor(x, y, width, height){
+//         this.x = x,
+//         this.y = y,
+//         this.height= height,
+//         this.width = width,
+//         // this.velocityX =0,
+//         this.speed = 5,
+//         // this.friction = 0.9,
+//         this.alive = true
+//         this.render= function(){
+//             const redCar = new Image()
+//                 redCar.src= "images/redcar.png"
+//                 redCar.onload=()=>{
+//                     ctx.drawImage(redCar, this.x, this.y)
+//                 }
+//         }
+//     } 
+// }
+// class RedCar2{
+//     constructor(x, y, width, height){
+//         this.x = x,
+//         this.y = y,
+//         this.height= height,
+//         this.width = width,
+//         // this.velocityX =0,
+//         this.speed = 5,
+//         // this.friction = 0.9,
+//         this.alive = true
+//         this.render= function(){
+//             const redCar = new Image()
+//                 redCar.src= "images/redcar.png"
+//                 redCar.onload=()=>{
+//                     ctx.drawImage(redCar, this.x, this.y)
+//                 }
+//         }
+//     } 
+// }
+// class RedCar3{
+//     constructor(x, y, width, height){
+//         this.x = x,
+//         this.y = y,
+//         this.height= height,
+//         this.width = width,
+//         // this.velocityX =0,
+//         this.speed = 5,
+//         // this.friction = 0.9,
+//         this.alive = true
+//         this.render= function(){
+//             const redCar = new Image()
+//                 redCar.src= "images/redcar.png"
+//                 redCar.onload=()=>{
+//                     ctx.drawImage(redCar, this.x, this.y)
+//                 }
+//         }
+//     } 
+// }
 class RedCar4{
     constructor(x, y, width, height){
         this.x = x,
@@ -354,27 +354,20 @@ class RedCar4{
     } 
     update(){
         ctx.clearRect(0,0,game.width, game.height)
-        this.render= function(){
-            const redCar = new Image()
-                redCar.src= "images/redcar.png"
-                redCar.onload=()=>{
-                    ctx.drawImage(redCar, this.x, this.y)
-                }
+            this.render= function(){
+                const redCar = new Image()
+                    redCar.src= "images/redcar.png"
+                    redCar.onload=()=>{
+                        ctx.drawImage(redCar, this.x, this.y)
+                    }
+            }
+            this.y +=1
+            if(this.y >=480){
+                return this.y=0
+            }
         }
-        this.y +=1
-
-        if (this.y >=480){
-            return this.y=0
-        }
-        // this.y+=1
     }
-    // loop(){
-    //     this.update()
-        
-        
-    //     requestAnimationFrame(loop())
-    // }
-}
+
 
 
 // const redCar4Move = []
@@ -385,22 +378,37 @@ class RedCar4{
 
 let yellowCar= new YellowCar(100,420,40,60)
 
-let blueCar1 = new BlueCar1(16,0,40,60)
-let blueCar2= new BlueCar2(90,0,40,60)
-let blueCar3= new BlueCar3(172,0, 40, 60)
-let blueCar4= new BlueCar4(240,0,40,60)
+// let blueCar1 = new BlueCar1(16,0,40,60)
+// let blueCar2= new BlueCar2(90,0,40,60)
+// let blueCar3= new BlueCar3(172,0, 40, 60)
+// let blueCar4= new BlueCar4(240,0,40,60)
 
-let blackCar1 = new BlackCar1(16, 0,40,60)
-let blackCar2= new BlackCar2(90,0,40,60)
-let blackCar3= new BlackCar3(172,0, 40, 60)
-let blackCar4= new BlackCar4(240,0,40,60)
+// let blackCar1 = new BlackCar1(16, 0,40,60)
+// let blackCar2= new BlackCar2(90,0,40,60)
+// let blackCar3= new BlackCar3(172,0, 40, 60)
+// let blackCar4= new BlackCar4(240,0,40,60)
 
-let redCar1 = new RedCar1(16,0,40,60)
-let redCar2= new RedCar2(90,0,40,60)
-let redCar3= new RedCar3(172,0, 40, 60)
+// let redCar1 = new RedCar1(16,0,40,60)
+// let redCar2= new RedCar2(90,0,40,60)
+// let redCar3= new RedCar3(172,0, 40, 60)
+let laneArray = [16, 90, 172, 240]
+
+const randomRedCar=()=>{
+    let randoRed= [laneArray[Math.floor(Math.random()*laneArray.length)]]
+    return randoRed
+}
+// for (let i=0; i<5; i++){
+//     RedCar4[i].render()
+//     RedCar4[i].y +=10
+// }
+// const redCar = []
+for (let i=0; i<5; i++){
+ RedCar4[i].render()
+}
 
 
-let redCar4= new RedCar4(240,0,40,60)
+
+let redCar4= new RedCar4(randomRedCar(game.width),0,40,60)
 // redCar4.render()
 // let updateRedCar4 = function(){
 //     // requestAnimationFrame(updateRedCar4)
@@ -422,22 +430,22 @@ let redCar4= new RedCar4(240,0,40,60)
 // const arrayThirteen=[blackCar3]
 // const arrayFourteen=[redCar4]
 
-let randomCars = [
-    [blueCar2, blackCar3],
-    [redCar1,blackCar2, blueCar4],
-    [blueCar1, blackCar2 , redCar3],
-    [blueCar1, redCar3, blackCar4],
-    [blackCar2, redCar3, blueCar4],
-    [blackCar1, blueCar2],
-    [redCar3, blackCar4],
-    [redCar2, blueCar4],
-    [redCar1, blackCar3],
-    [blackCar1, blueCar4],
-    [blueCar1],
-    [redCar2],
-    [blackCar3],
-    [redCar4]
-]
+// let randomCars = [
+//     [blueCar2, blackCar3],
+//     [redCar1,blackCar2, blueCar4],
+//     [blueCar1, blackCar2 , redCar3],
+//     [blueCar1, redCar3, blackCar4],
+//     [blackCar2, redCar3, blueCar4],
+//     [blackCar1, blueCar2],
+//     [redCar3, blackCar4],
+//     [redCar2, blueCar4],
+//     [redCar1, blackCar3],
+//     [blackCar1, blueCar4],
+//     [blueCar1],
+//     [redCar2],
+//     [blackCar3],
+//     [redCar4]
+// ]
 // grab the y of redCard4 and move it down lane 4 
 // create a pause after. Maybe use setTimeout or setInterval?
 // grab the y of blueCar 3 and move it down lane 3 
@@ -522,11 +530,11 @@ const gameLoop = () => {
     ctx.clearRect(0,0,game.width, game.height)
 
     // update()
-    // randomCarArray()
+    
     redCar4.render()
     redCar4.update()
-    blueCar3.render()
-    blueCar3.update()
+    // blueCar3.render()
+    // blueCar3.update()
 
     yellowCar.render() 
     yellowCar.moveYellowCar()
