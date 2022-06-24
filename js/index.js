@@ -34,12 +34,12 @@ class YellowCar{
         // if (key == 'ArrowLeft') { this.direction.left = true }
         if (key.toLowerCase() == 'a') { this.direction.left = true }
         ctx.clearRect(0,0,game.width, game.height)
-        requestAnimationFrame(gameLoop,60)
+        requestAnimationFrame(gameLoop,120)
         // if (key.toLowerCase() == 's') { this.direction.down = true }
         if (key.toLowerCase() == 'd') { this.direction.right = true }
         ctx.clearRect(0,0,game.width, game.height)
         // if (key == 'ArrowRight') { this.direction.right = true }
-        requestAnimationFrame(gameLoop,60)
+        requestAnimationFrame(gameLoop,120)
     }
 
     unSetDirection = function (key) {
@@ -85,7 +85,7 @@ class YellowCar{
 
 
 class RedCar{
-    constructor(x, y, width, height, speed){
+    constructor(x, y, width, height){
         this.x = x,
         this.y = y,
         // this.dx =dx,
@@ -93,23 +93,20 @@ class RedCar{
         this.height= width,
         this.width = height,
         // this.velocityX =0,
-        this.speed = speed,
+        this.speed = Math.random() * 4 - 2,
         this.moveCounter =4
         // this.friction = 0.9,
         this.alive = true 
     } 
-    move(x){
-        this.x =x;
-    }
     update(){
-        ctx.clearRect(0,0,game.width, game.height)
-            this.render= function(){
-                const redCar = new Image()
-                    redCar.src= "images/redcar.png"
-                    redCar.onload=()=>{
-                        ctx.drawImage(redCar, this.x, this.y)
-                    }
-            }
+        // ctx.clearRect(0,0,game.width, game.height)
+        //     this.render= function(){
+        //         const redCar = new Image()
+        //             redCar.src= "images/redcar.png"
+        //             redCar.onload=()=>{
+        //                 ctx.drawImage(redCar, this.x, this.y)
+        //             }
+        //     }
             this.y +=1
 
             if (this.y === 90) {
@@ -120,27 +117,7 @@ class RedCar{
             //     this.y++
             //     this.moveCounter = 2
             //     }   
-            // if(this.y>=90){
-            //     return this.render= function(){
-            //         const redCar = new Image()
-            //             redCar.src= "images/redcar.png"
-            //             redCar.onload=()=>{
-            //                 ctx.drawImage(redCar, this.x, this.y)
-            //             }
-            //     }
-            // }
-            // if(this.y>=180){
-            //     return this.render= function(){
-            //         const redCar = new Image()
-            //             redCar.src= "images/redcar.png"
-            //             redCar.onload=()=>{
-            //                 ctx.drawImage(redCar, this.x, this.y)
-            //             }
-            //     }
-            // }
-            // if(this.y >=480){
-            //     return this.y=0
-            // }
+           
     }
     render(){
         const redCar = new Image()
@@ -180,64 +157,18 @@ function randomRedCar(){
     // }
 }
 let randoX = randomRedCar()
+// let redSpeed=  Math.random() * 4 - 2
 
 function addNewCar(){
     let randoX = randomRedCar()
-   let newRedCar = new RedCar(randoX,0,40,60,25)
-   cars.push(newRedCar)
-   
-    
+    let newRedCar = new RedCar(randoX,0,40,60,25)
+    cars.push(newRedCar)
 }
 
+let yellowCar= new YellowCar(100,420,40,60)
 
-
-
-let yellowCar= new YellowCar(100,420,60,80)
-let redSpeed=  Math.random() * 4 - 2
-
-
-// let randomX=()=>{
-//     Math.floor(Math.random()*game.width)
-// }
 
 let redCar =new RedCar(16,0,40,60,25)
-
-
-
-// const newCar=()=>{
-//     if(this.y>=90){
-//         this.y=0
-//         return this.render= function(){
-//             const redCar = new Image()
-//                 redCar.src= "images/redcar.png"
-//                 redCar.onload=()=>{
-//                     ctx.drawImage(redCar, 240, 0)
-//                 }
-//         }
-//     }
-//     if(this.y>=180){
-//         return this.render= function(){
-//             const redCar = new Image()
-//                 redCar.src= "images/redcar.png"
-//                 redCar.onload=()=>{
-//                     ctx.drawImage(redCar, this.x, this.y)
-//                 }
-//         }
-//     }
-// }
-// newCar(redCar)
-// const randomRedCar=()=>{
-//     for (let i=0; i<=30; i++){
-//         let randoRedNumber= [laneArray[Math.floor(Math.random()*laneArray.length)]]
-//         let redCar= new RedCar(randoRedNumber,0,60,80)
-//         console.log(redCar)
-//         redCar.render()
-//         console.log(redCar.render())
-//         redCar.y +=1
-//     }
-// }
-// randomRedCar()
-
 
 
 const gameLoop = () => {
@@ -247,28 +178,30 @@ const gameLoop = () => {
     // if the simpsons car is deceased, the game will end 
     ctx.clearRect(0,0,game.width, game.height)
 
-    // update()
+    
     cars.forEach((car)=>{
+        car.update()
+        if(car.alive===true){
         car.render()
         detectHit(car)
-        car.update()
+        } else {
+            stopGameLoop()
+            document.getElementById('container').style.backgroundColor ='black'
+            document.getElementById('container').innerHTML=`<audio controls autoplay> id="lose" <source src="audio/Doh.mp3" type="audio/mpeg"></audio>`
+            document.getElementById('container').innerHTML= `<img id="simpson-doh-gif" src="https://media.giphy.com/media/TwtXMS5EnKDBK/giphy.gif"/>`
+        }
     })
-
-
-    if (redCar.alive){
-        redCar.render()
-        detectHit(redCar)
-    } else {
-        document.getElementById('container').style.backgroundColor ='black'
-        document.getElementById('container').innerHTML=`<img id="donut-gif-1" src="https://media.giphy.com/media/U7PwlrLCvk0Zoviyht/giphy.gif" /> <img id="donut-gif-2" src="https://media.giphy.com/media/U7PwlrLCvk0Zoviyht/giphy.gif" /> <h1 id="winner">Winner Winner Chicken Dinner!</h1> <audio controls autoplay> id="homer-win-voice" <source src="audio/Homer Simpson _ The Simpsons I win.mp3" type="audio/mpeg"></audio> <img id="simpson-gif" src="https://media.giphy.com/media/ZCldwd8JpfXgY/giphy.gif"/>`
-        // document.getElementById('container').style.backgroundColor ='black'
-        // document.getElementById('container').innerHTML=`<audio controls autoplay> id="lose" <source src="audio/Home Simpson _ The Simpsons Doh.mp3" type="audio/mpeg"></audio> <img id="simpson-doh-gif" src="https://media.giphy.com/media/TwtXMS5EnKDBK/giphy.gif"/>`
-    }
     
-    // redCar.randomRedCar()
-    // newCar()
-    // newCar(redCar)
-    
+
+    // if (redCar.alive){
+    //     redCar.render()
+    //     detectHit(redCar)
+    // } else {
+    //     stopGameLoop()
+    //     document.getElementById('container').style.backgroundColor ='black'
+    //     document.getElementById('container').innerHTML=`<audio controls autoplay> id="lose" <source src="audio/Doh.mp3" type="audio/mpeg"></audio>`
+    //     document.getElementById('container').innerHTML= `<img id="simpson-doh-gif" src="https://media.giphy.com/media/TwtXMS5EnKDBK/giphy.gif"/>`
+    // }
     redCar.update()
 
     yellowCar.render() 
@@ -277,7 +210,7 @@ const gameLoop = () => {
 }
     
 
-let gameInterval =  setInterval(gameLoop, 60)
+let gameInterval =  setInterval(gameLoop, 8)
 
 const stopGameLoop=()=> {clearInterval(gameInterval)}
 // we're going to use setInterval to repeat our game loop function at specific times
@@ -290,12 +223,6 @@ document.addEventListener('keydown', (e) => {
     // when the key is down, set the direction according to our
     // player.setDirection method
     yellowCar.setDirection(e.key)
-
-    // function moveRandomCars(){
-    //     ctx.beginPath()
-    //     ctx.
-    // }
-    // moveRandomCars()
 })
 
 document.addEventListener('keyup', (e) => {
@@ -308,22 +235,32 @@ document.addEventListener('keyup', (e) => {
 document.addEventListener('DOMContentLoaded', function(){
     gameInterval
     ctx.clearRect(0,0,game.width, game.height)
-    requestAnimationFrame(gameLoop,60)
+    requestAnimationFrame(gameLoop,120)
 })
 
 
+// const detectHit = (thing) => {
+//     //hit condition
+//     if (yellowCar.x < thing.x + thing.width
+//         && yellowCar.x + yellowCar.width > thing.x
+//         && yellowCar.y < thing.y + thing.height&&  yellowCar.y + yellowCar.height >thing.y){
+//             thing.alive = false
+//         }
+// }
 const detectHit = (thing) => {
-    //hit condition
+    
     if (yellowCar.x < thing.x + thing.width
         && yellowCar.x + yellowCar.width > thing.x
         && yellowCar.y < thing.y + thing.height&&  yellowCar.y + yellowCar.height >thing.y){
-
             thing.alive = false
-            
+            console.log('it works')
         }
 }
 
 
+
+ // document.getElementById('container').style.backgroundColor ='black'
+        // document.getElementById('container').innerHTML=`<img id="donut-gif-1" src="https://media.giphy.com/media/U7PwlrLCvk0Zoviyht/giphy.gif" /> <img id="donut-gif-2" src="https://media.giphy.com/media/U7PwlrLCvk0Zoviyht/giphy.gif" /> <h1 id="winner">Winner Winner Chicken Dinner!</h1> <audio controls autoplay> id="homer-win-voice" <source src="audio/I win.mp3" type="audio/mpeg"></audio> <img id="simpson-gif" src="https://media.giphy.com/media/ZCldwd8JpfXgY/giphy.gif"/>`
 
 
 
