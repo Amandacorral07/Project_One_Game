@@ -8,11 +8,9 @@ game.setAttribute('height', getComputedStyle(game)['height'])
 console.log('this is the vanvas width', game.width)
 console.log('this is the canvas height', game.height)
 
+const cars = []
 // game.setAttribute('width', '230')
 // game.setAttribute('height', '486')
-
-
-
 
 class YellowCar{
     constructor(x, y, width, height){
@@ -43,6 +41,7 @@ class YellowCar{
         // if (key == 'ArrowRight') { this.direction.right = true }
         requestAnimationFrame(gameLoop,60)
     }
+
     unSetDirection = function (key) {
         console.log('this is the key that was pressed', key)
         if (key.toLowerCase() == 'a') { this.direction.left = false }
@@ -54,27 +53,25 @@ class YellowCar{
         // if (key == 'ArrowRight') { this.direction.right = false }
     }
     moveYellowCar = function () {
-    if (this.direction.left) {
-        this.x -= this.speed
-        this.velocityX *= this.friction
-        this.x += this.velocityX
+        if (this.direction.left) {
+            this.x -= this.speed
+            this.velocityX *= this.friction
+            this.x += this.velocityX
 
         if (this.x <= 0) {
             this.x = 0
         }
-    }
-    if (this.direction.right) {
-        this.x += this.speed
-        this.velocityX *= this.friction
-        this.x += this.velocityX
+        }
+        if (this.direction.right) {
+            this.x += this.speed
+            this.velocityX *= this.friction
+            this.x += this.velocityX
         if (this.x + this.width >= game.width) {
             this.x = game.width - this.width
         }
-    }
+        }
     
-}
-
-
+    }
     render= function(){
         const yellowCar = new Image()
             yellowCar.src= "images/yellowcar.png"
@@ -82,12 +79,251 @@ class YellowCar{
                 ctx.drawImage(yellowCar, this.x, this.y)
                 
         }
+    }
 }
-    // draw()
-    // moveLine()
+
+
+
+class RedCar{
+    constructor(x, y, width, height, speed){
+        this.x = x,
+        this.y = y,
+        // this.dx =dx,
+        // this.dy= dy,
+        this.height= width,
+        this.width = height,
+        // this.velocityX =0,
+        this.speed = speed,
+        this.moveCounter =4
+        // this.friction = 0.9,
+        this.alive = true 
+    } 
+    move(x){
+        this.x =x;
+    }
+    update(){
+        ctx.clearRect(0,0,game.width, game.height)
+            this.render= function(){
+                const redCar = new Image()
+                    redCar.src= "images/redcar.png"
+                    redCar.onload=()=>{
+                        ctx.drawImage(redCar, this.x, this.y)
+                    }
+            }
+            this.y +=1
+
+            if (this.y === 90) {
+                addNewCar()
+             }
+            // this.moveCounter--
+            //     if (this.moveCounter === 0) {
+            //     this.y++
+            //     this.moveCounter = 2
+            //     }   
+            // if(this.y>=90){
+            //     return this.render= function(){
+            //         const redCar = new Image()
+            //             redCar.src= "images/redcar.png"
+            //             redCar.onload=()=>{
+            //                 ctx.drawImage(redCar, this.x, this.y)
+            //             }
+            //     }
+            // }
+            // if(this.y>=180){
+            //     return this.render= function(){
+            //         const redCar = new Image()
+            //             redCar.src= "images/redcar.png"
+            //             redCar.onload=()=>{
+            //                 ctx.drawImage(redCar, this.x, this.y)
+            //             }
+            //     }
+            // }
+            // if(this.y >=480){
+            //     return this.y=0
+            // }
+    }
+    render(){
+        const redCar = new Image()
+            redCar.src= "images/redcar.png"
+            redCar.onload=()=>{
+                ctx.drawImage(redCar, this.x, this.y)
+            }
+    }
+    // randomRedCar(){
+    //     for (let i=0; i<=10; i++){
+    //         let randoRedNumber= [laneArray[Math.floor(Math.random()*laneArray.length)]]
+    //         this.x =randoRedNumber
+
+    //         // let redCar= new RedCar(randoRedNumber,0,60,80)
+    //         console.log(redCar)
+    //         // redCar.render()
+    //         console.log(redCar.render())
+    //         // redCar.y +=1
+    //         redCar.speed= 10000
+    //     }
+    //     // setInterval(this.randomRedCar, .0001)
+    // }
+}
+
+// function addNewCar(){
+//     const newCar = new Image()
+//     newCar.src= "images/redcar.png"
+//     newCar.onload=()=>{
+//         ctx.drawImage(newCar, this.x, this.y)
+//     }
+//     randomRedCar.push(newCar)
+// }
+let laneArray = [16, 90, 172, 240]
+function randomRedCar(){
+    // for (let i=0; i<=10; i++){
+    return laneArray[Math.floor(Math.random()*laneArray.length)]
+    // }
+}
+let randoX = randomRedCar()
+
+function addNewCar(){
+    let randoX = randomRedCar()
+   let newRedCar = new RedCar(randoX,0,40,60,25)
+   cars.push(newRedCar)
+   
+    
+}
+
+
+
+
+let yellowCar= new YellowCar(100,420,60,80)
+let redSpeed=  Math.random() * 4 - 2
+
+
+// let randomX=()=>{
+//     Math.floor(Math.random()*game.width)
+// }
+
+let redCar =new RedCar(16,0,40,60,25)
+
+
+
+// const newCar=()=>{
+//     if(this.y>=90){
+//         this.y=0
+//         return this.render= function(){
+//             const redCar = new Image()
+//                 redCar.src= "images/redcar.png"
+//                 redCar.onload=()=>{
+//                     ctx.drawImage(redCar, 240, 0)
+//                 }
+//         }
+//     }
+//     if(this.y>=180){
+//         return this.render= function(){
+//             const redCar = new Image()
+//                 redCar.src= "images/redcar.png"
+//                 redCar.onload=()=>{
+//                     ctx.drawImage(redCar, this.x, this.y)
+//                 }
+//         }
+//     }
+// }
+// newCar(redCar)
+// const randomRedCar=()=>{
+//     for (let i=0; i<=30; i++){
+//         let randoRedNumber= [laneArray[Math.floor(Math.random()*laneArray.length)]]
+//         let redCar= new RedCar(randoRedNumber,0,60,80)
+//         console.log(redCar)
+//         redCar.render()
+//         console.log(redCar.render())
+//         redCar.y +=1
+//     }
+// }
+// randomRedCar()
+
+
+
+const gameLoop = () => {
+    
+    // the 'win'condition of our game is to get to Dodger statdium 
+    // if the simpsons car is still alive, then the game will continue 
+    // if the simpsons car is deceased, the game will end 
+    ctx.clearRect(0,0,game.width, game.height)
+
+    // update()
+    cars.forEach((car)=>{
+        car.render()
+        detectHit(car)
+        car.update()
+    })
+
+
+    if (redCar.alive){
+        redCar.render()
+        detectHit(redCar)
+    } else {
+        document.getElementById('container').style.backgroundColor ='black'
+        document.getElementById('container').innerHTML=`<img id="donut-gif-1" src="https://media.giphy.com/media/U7PwlrLCvk0Zoviyht/giphy.gif" /> <img id="donut-gif-2" src="https://media.giphy.com/media/U7PwlrLCvk0Zoviyht/giphy.gif" /> <h1 id="winner">Winner Winner Chicken Dinner!</h1> <audio controls autoplay> id="homer-win-voice" <source src="audio/Homer Simpson _ The Simpsons I win.mp3" type="audio/mpeg"></audio> <img id="simpson-gif" src="https://media.giphy.com/media/ZCldwd8JpfXgY/giphy.gif"/>`
+        // document.getElementById('container').style.backgroundColor ='black'
+        // document.getElementById('container').innerHTML=`<audio controls autoplay> id="lose" <source src="audio/Home Simpson _ The Simpsons Doh.mp3" type="audio/mpeg"></audio> <img id="simpson-doh-gif" src="https://media.giphy.com/media/TwtXMS5EnKDBK/giphy.gif"/>`
+    }
+    
+    // redCar.randomRedCar()
+    // newCar()
+    // newCar(redCar)
+    
+    redCar.update()
+
+    yellowCar.render() 
+    yellowCar.moveYellowCar()
+    
+}
     
 
+let gameInterval =  setInterval(gameLoop, 60)
+
+const stopGameLoop=()=> {clearInterval(gameInterval)}
+// we're going to use setInterval to repeat our game loop function at specific times
+// document.addEventListener('DOMContentLoaded', function () {
+//     // this starts the game when the content is loaded
+//     gameInterval
+// })
+
+document.addEventListener('keydown', (e) => {
+    // when the key is down, set the direction according to our
+    // player.setDirection method
+    yellowCar.setDirection(e.key)
+
+    // function moveRandomCars(){
+    //     ctx.beginPath()
+    //     ctx.
+    // }
+    // moveRandomCars()
+})
+
+document.addEventListener('keyup', (e) => {
+    // this one will look a lil different than keydown
+    // we need to make sure it only applies to the keys we listed in unSetDirection
+    if (['a','d'].includes(e.key)) {
+        yellowCar.unSetDirection(e.key)
+    }
+})
+document.addEventListener('DOMContentLoaded', function(){
+    gameInterval
+    ctx.clearRect(0,0,game.width, game.height)
+    requestAnimationFrame(gameLoop,60)
+})
+
+
+const detectHit = (thing) => {
+    //hit condition
+    if (yellowCar.x < thing.x + thing.width
+        && yellowCar.x + yellowCar.width > thing.x
+        && yellowCar.y < thing.y + thing.height&&  yellowCar.y + yellowCar.height >thing.y){
+
+            thing.alive = false
+            
+        }
 }
+
+
 
 
 
@@ -129,43 +365,43 @@ class YellowCar{
 //         }
 //     } 
 // }
-class BlueCar3{
-    constructor(x, y, width, height){
-        this.x = x,
-        this.y = y,
-        this.height= height,
-        this.width = width,
-        // this.velocityX =0,
-        this.speed = 5,
-        // this.friction = 0.9,
-        this.alive = true
-        this.render= function(){
-            const blueCar = new Image()
-                blueCar.src= "images/bluecar.png"
-                blueCar.onload=()=>{
-                    ctx.drawImage(blueCar, this.x, this.y)
-                }
-        }
-    } 
-    update(){
-        ctx.clearRect(0,0,game.width, game.height)
-        this.render= function(){
-            const blueCar = new Image()
-                blueCar.src= "images/bluecar.png"
-                blueCar.onload=()=>{
-                    ctx.drawImage(blueCar, this.x, this.y)
-                }
-        }
+// class BlueCar3{
+//     constructor(x, y, width, height){
+//         this.x = randomRedCar,
+//         this.y = y,
+//         this.height= height,
+//         this.width = width,
+//         // this.velocityX =0,
+//         this.speed = 5,
+//         // this.friction = 0.9,
+//         this.alive = true
+//         this.render= function(){
+//             const blueCar = new Image()
+//                 blueCar.src= "images/bluecar.png"
+//                 blueCar.onload=()=>{
+//                     ctx.drawImage(blueCar, this.x, this.y)
+//                 }
+//         }
+//     } 
+//     update(){
+//         ctx.clearRect(0,0,game.width, game.height)
+//         this.render= function(){
+//             const blueCar = new Image()
+//                 blueCar.src= "images/bluecar.png"
+//                 blueCar.onload=()=>{
+//                     ctx.drawImage(blueCar, this.x, this.y)
+//                 }
+//         }
 
-        if(RedCar4.y >= 90){
-            return this.y +=1
-            // this.speed
-        }
-        if (this.y >=480){
-            return this.y=0
-        }
-    }
-}
+//         if(RedCar4.y >= 90){
+//             return this.y +=1
+//             // this.speed
+//         }
+//         if (this.y >=480){
+//             return this.y=0
+//         }
+//     }
+// }
 
 
 // class BlueCar4{
@@ -321,62 +557,40 @@ class BlueCar3{
 //         }
 //     } 
 // }
-class RedCar4{
-    constructor(x, y, width, height){
-        this.x = x,
-        this.y = y,
-        // this.dx = 1* this.speed,
-        // this.dy = 1* this.speed,
-        this.height= height,
-        this.width = width,
-        // this.velocityX =0,
-        this.speed = 20,
-        // this.friction = 0.9,
-        this.alive = true
-        this.render= function(){
-            const redCar = new Image()
-                redCar.src= "images/redcar.png"
-                redCar.onload=()=>{
-                    ctx.drawImage(redCar, this.x, this.y)
-                }
-        }
-        // this.update= function(){
-        //     ctx.clearRect(0,0,game.width, game.height)
-        //     this.render= function(){
-        //         const redCar = new Image()
-        //             redCar.src= "images/redcar.png"
-        //             redCar.onload=()=>{
-        //                 ctx.drawImage(redCar, this.x, this.y)
-        //             }
-        //     }
-        //     this.y += this.dy
-        // }
-    } 
-    update(){
-        ctx.clearRect(0,0,game.width, game.height)
-            this.render= function(){
-                const redCar = new Image()
-                    redCar.src= "images/redcar.png"
-                    redCar.onload=()=>{
-                        ctx.drawImage(redCar, this.x, this.y)
-                    }
-            }
-            this.y +=1
-            if(this.y >=480){
-                return this.y=0
-            }
-        }
-    }
 
 
 
-// const redCar4Move = []
-// for (let i=0; i<5; i++){
-//     redCar4Move[i].update()
-//     redCar4Move[i].render()
+// let randoCars = randomCarArray()
+
+// const randomCarArray=()=>{
+//     let randoCars= randomCars[Math.floor(Math.random()*randomCars.length)]
+    // console.log(randoCars)
+    // randoCars.forEach(i.render())
+    // for (let i=0; i<randoCars.length; i++){
+    //     randoCars[i].render()
+        // randoCars[i].y +=10 
+        // ctx.clearRect(0,0,game.width, game.height)
+        // requestAnimationFrame(randomCarArray)
+        // setInterval(randomCarArray,1000)
+        // ctx.clearRect(0,0,game.width, game.height)
+        // clearInterval(30000)
+        // requestAnimationFrame(randomCarArray)
+//     }
+//     return randoCars
 // }
-
-let yellowCar= new YellowCar(100,420,40,60)
+// for (let i=0; i<5; i++){
+//     RedCar4[i].render()
+//     RedCar4[i].y +=10
+// }
+// const redCar = []
+// for (let i=0; i<30; i++){
+//     redCar.push(new RedCar4())
+//  RedCar4[i].render()
+// }
+// const treatsArray = []
+// for (let i = 0; i < 30; i++) {
+//     treatsArray.push(new Treats())
+// }
 
 // let blueCar1 = new BlueCar1(16,0,40,60)
 // let blueCar2= new BlueCar2(90,0,40,60)
@@ -391,24 +605,8 @@ let yellowCar= new YellowCar(100,420,40,60)
 // let redCar1 = new RedCar1(16,0,40,60)
 // let redCar2= new RedCar2(90,0,40,60)
 // let redCar3= new RedCar3(172,0, 40, 60)
-let laneArray = [16, 90, 172, 240]
-
-const randomRedCar=()=>{
-    let randoRed= [laneArray[Math.floor(Math.random()*laneArray.length)]]
-    return randoRed
-}
-// for (let i=0; i<5; i++){
-//     RedCar4[i].render()
-//     RedCar4[i].y +=10
-// }
-// const redCar = []
-for (let i=0; i<5; i++){
- RedCar4[i].render()
-}
 
 
-
-let redCar4= new RedCar4(randomRedCar(game.width),0,40,60)
 // redCar4.render()
 // let updateRedCar4 = function(){
 //     // requestAnimationFrame(updateRedCar4)
@@ -522,24 +720,13 @@ let redCar4= new RedCar4(randomRedCar(game.width),0,40,60)
 // }
 // requestAnimationFrame(update,60)
 
-const gameLoop = () => {
-    
-    // the 'win'condition of our game is to get to Dodger statdium 
-    // if the simpsons car is still alive, then the game will continue 
-    // if the simpsons car is deceased, the game will end 
-    ctx.clearRect(0,0,game.width, game.height)
+    // setInterval(gameLoop,10)
+    //in here, we need to have our movement handler
+    // document.addEventListener('keydown', movementHandler)
 
-    // update()
-    
-    redCar4.render()
-    redCar4.update()
-    // blueCar3.render()
-    // blueCar3.update()
 
-    yellowCar.render() 
-    yellowCar.moveYellowCar()
 
-    
+
     // update()
     // randoCars.render()
     // if(randomCarArray()===[blueCar2, blackCar3]){
@@ -572,9 +759,8 @@ const gameLoop = () => {
     //     return redCar4.render()
     // }
       
-    
-}
-    
+// document.getElementById('container').style.backgroundColor ='black'
+//         document.getElementById('container').innerHTML=`<img id="donut-gif-1" src="https://media.giphy.com/media/U7PwlrLCvk0Zoviyht/giphy.gif" /> <img id="donut-gif-2" src="https://media.giphy.com/media/U7PwlrLCvk0Zoviyht/giphy.gif" /> <h1 id="winner">Winner Winner Chicken Dinner!</h1> <audio controls autoplay> id="homer-win-voice" <source src="audio/Homer Simpson _ The Simpsons I win.mp3" type="audio/mpeg"></audio> <img id="simpson-gif" src="https://media.giphy.com/media/ZCldwd8JpfXgY/giphy.gif"/>`
     // blueCar1.render()
     // blueCar2.render()
     // blueCar3.render()
@@ -621,32 +807,7 @@ const gameLoop = () => {
   
 
 
-document.addEventListener('keydown', (e) => {
-    // when the key is down, set the direction according to our
-    // player.setDirection method
-    yellowCar.setDirection(e.key)
 
-    // function moveRandomCars(){
-    //     ctx.beginPath()
-    //     ctx.
-    // }
-    // moveRandomCars()
-})
-
-document.addEventListener('keyup', (e) => {
-    // this one will look a lil different than keydown
-    // we need to make sure it only applies to the keys we listed in unSetDirection
-    if (['a','d'].includes(e.key)) {
-        yellowCar.unSetDirection(e.key)
-    }
-})
-document.addEventListener('DOMContentLoaded', function(){
-    ctx.clearRect(0,0,game.width, game.height)
-    requestAnimationFrame(gameLoop,60)
-    // setInterval(gameLoop,10)
-    //in here, we need to have our movement handler
-    // document.addEventListener('keydown', movementHandler)
-})
 
 // let offset =0
 // function draw(){
@@ -705,18 +866,6 @@ document.addEventListener('DOMContentLoaded', function(){
 //   let y = 15;
 //   drawDashedLine([10, 10]);
 
-
-const detectHit = () => {
-    //hit condition
-    if (yellowCar.x < blueCar.x + blueCar.width
-        && yellowCar.x + yellowCar.width > blueCar.x
-        && yellowCar.y < blueCar.y + blueCar.height&&  yellowCar.y + yellowCar.height > blueCar.y){
-
-            blueCar.alive = false
-            document.getElementById('container').style.backgroundColor ='black'
-            document.getElementById('container').innerHTML=`<img id="donut-gif-1" src="https://media.giphy.com/media/U7PwlrLCvk0Zoviyht/giphy.gif" /> <img id="donut-gif-2" src="https://media.giphy.com/media/U7PwlrLCvk0Zoviyht/giphy.gif" /> <h1 id="winner">Winner Winner Chicken Dinner!</h1> <audio controls autoplay> id="homer-win-voice" <source src="audio/Homer Simpson _ The Simpsons I win.mp3" type="audio/mpeg"></audio> <img id="simpson-gif" src="https://media.giphy.com/media/ZCldwd8JpfXgY/giphy.gif"/>`
-        }
-}
 
 // ctx.setLineDash([4,16])
 
