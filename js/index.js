@@ -9,6 +9,8 @@ console.log('this is the vanvas width', game.width)
 console.log('this is the canvas height', game.height)
 
 const cars = []
+
+const dodger = []
 // game.setAttribute('width', '230')
 // game.setAttribute('height', '486')
 
@@ -88,37 +90,33 @@ class RedCar{
     constructor(x, y, width, height){
         this.x = x,
         this.y = y,
-        // this.dx =dx,
-        // this.dy= dy,
         this.height= width,
         this.width = height,
         // this.velocityX =0,
         this.speed = Math.random() * 4 - 2,
-        this.moveCounter =4
         // this.friction = 0.9,
         this.alive = true 
     } 
     update(){
-        // ctx.clearRect(0,0,game.width, game.height)
-        //     this.render= function(){
-        //         const redCar = new Image()
-        //             redCar.src= "images/redcar.png"
-        //             redCar.onload=()=>{
-        //                 ctx.drawImage(redCar, this.x, this.y)
-        //             }
-        //     }
             this.y +=1
 
             if (this.y === 90) {
                 addNewCar()
-             }
-            // this.moveCounter--
-            //     if (this.moveCounter === 0) {
-            //     this.y++
-            //     this.moveCounter = 2
-            //     }   
-           
+            }
+            // setTimeout( ()=>{
+            //     return
+                
+            // },
+            // 5000
+            // )   
     }
+    // transparent(){
+    //     const transparent = new Image()
+    //         transparent.src="images/transparent-car.png"
+    //         transparent.onload=()=>{
+    //                 ctx.drawImage(transparent,this.x,this.y)
+    //         }
+    // }
     render(){
         const redCar = new Image()
             redCar.src= "images/redcar.png"
@@ -126,49 +124,55 @@ class RedCar{
                 ctx.drawImage(redCar, this.x, this.y)
             }
     }
-    // randomRedCar(){
-    //     for (let i=0; i<=10; i++){
-    //         let randoRedNumber= [laneArray[Math.floor(Math.random()*laneArray.length)]]
-    //         this.x =randoRedNumber
-
-    //         // let redCar= new RedCar(randoRedNumber,0,60,80)
-    //         console.log(redCar)
-    //         // redCar.render()
-    //         console.log(redCar.render())
-    //         // redCar.y +=1
-    //         redCar.speed= 10000
-    //     }
-    //     // setInterval(this.randomRedCar, .0001)
-    // }
 }
 
-// function addNewCar(){
-//     const newCar = new Image()
-//     newCar.src= "images/redcar.png"
-//     newCar.onload=()=>{
-//         ctx.drawImage(newCar, this.x, this.y)
-//     }
-//     randomRedCar.push(newCar)
-// }
+class DodgerSign{
+    constructor(x,y, width, height, speed){
+    this.x=x,
+    this.y=y,
+    this.width= width,
+    this.height=height,
+    this.speed=speed,
+    this.alive = true
+    }
+    update(){
+        setTimeout( ()=>{
+            this.y +=1
+        },
+        5000
+        )        
+    }
+    render(){
+        const dodgerSign = new Image()
+        dodgerSign.src= "images/Welcome to Dodger Stadium3.png"
+        dodgerSign.onload=()=>{
+            ctx.drawImage(dodgerSign, this.x, this.y)
+        }
+    }
+}
+
 let laneArray = [16, 90, 172, 240]
 function randomRedCar(){
-    // for (let i=0; i<=10; i++){
     return laneArray[Math.floor(Math.random()*laneArray.length)]
-    // }
 }
 let randoX = randomRedCar()
-// let redSpeed=  Math.random() * 4 - 2
 
 function addNewCar(){
     let randoX = randomRedCar()
-    let newRedCar = new RedCar(randoX,0,40,60,25)
+    let newRedCar = new RedCar(randoX,0,30,50)
     cars.push(newRedCar)
 }
+
+function stopNewCar(){
+    return
+}
+
+let dodgerSign = new DodgerSign(0,-50,300,40,5)
 
 let yellowCar= new YellowCar(100,420,40,60)
 
 
-let redCar =new RedCar(16,0,40,60,25)
+let redCar =new RedCar(16,0,30,50,25)
 
 
 const gameLoop = () => {
@@ -178,7 +182,6 @@ const gameLoop = () => {
     // if the simpsons car is deceased, the game will end 
     ctx.clearRect(0,0,game.width, game.height)
 
-    
     cars.forEach((car)=>{
         car.update()
         if(car.alive===true){
@@ -186,12 +189,21 @@ const gameLoop = () => {
         detectHit(car)
         } else {
             stopGameLoop()
+            
             document.getElementById('container').style.backgroundColor ='black'
             document.getElementById('container').innerHTML=`<audio controls autoplay> id="lose" <source src="audio/Doh.mp3" type="audio/mpeg"></audio>`
             document.getElementById('container').innerHTML= `<img id="simpson-doh-gif" src="https://media.giphy.com/media/TwtXMS5EnKDBK/giphy.gif"/>`
         }
     })
-    
+
+if (dodgerSign.alive===true){
+    dodgerSign.render()
+    detectHit(dodgerSign)
+} else {
+    stopGameLoop()
+        document.getElementById('container').style.backgroundColor ='black'
+        document.getElementById('container').innerHTML=`<img id="donut-gif-1" src="https://media.giphy.com/media/U7PwlrLCvk0Zoviyht/giphy.gif" /> <img id="donut-gif-2" src="https://media.giphy.com/media/U7PwlrLCvk0Zoviyht/giphy.gif" /> <h1 id="winner">Winner Winner Chicken Dinner!</h1> <audio controls autoplay> id="homer-win-voice" <source src="audio/I win.mp3" type="audio/mpeg"></audio> <img id="simpson-gif" src="https://media.giphy.com/media/ZCldwd8JpfXgY/giphy.gif"/>`
+    }
 
     // if (redCar.alive){
     //     redCar.render()
@@ -202,6 +214,8 @@ const gameLoop = () => {
     //     document.getElementById('container').innerHTML=`<audio controls autoplay> id="lose" <source src="audio/Doh.mp3" type="audio/mpeg"></audio>`
     //     document.getElementById('container').innerHTML= `<img id="simpson-doh-gif" src="https://media.giphy.com/media/TwtXMS5EnKDBK/giphy.gif"/>`
     // }
+    // redCar.transparent()
+    dodgerSign.update()
     redCar.update()
 
     yellowCar.render() 
@@ -213,11 +227,6 @@ const gameLoop = () => {
 let gameInterval =  setInterval(gameLoop, 8)
 
 const stopGameLoop=()=> {clearInterval(gameInterval)}
-// we're going to use setInterval to repeat our game loop function at specific times
-// document.addEventListener('DOMContentLoaded', function () {
-//     // this starts the game when the content is loaded
-//     gameInterval
-// })
 
 document.addEventListener('keydown', (e) => {
     // when the key is down, set the direction according to our
@@ -238,15 +247,6 @@ document.addEventListener('DOMContentLoaded', function(){
     requestAnimationFrame(gameLoop,120)
 })
 
-
-// const detectHit = (thing) => {
-//     //hit condition
-//     if (yellowCar.x < thing.x + thing.width
-//         && yellowCar.x + yellowCar.width > thing.x
-//         && yellowCar.y < thing.y + thing.height&&  yellowCar.y + yellowCar.height >thing.y){
-//             thing.alive = false
-//         }
-// }
 const detectHit = (thing) => {
     
     if (yellowCar.x < thing.x + thing.width
