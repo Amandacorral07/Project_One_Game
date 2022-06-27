@@ -98,25 +98,19 @@ class RedCar{
         this.alive = true 
     } 
     update(){
-            this.y +=1
-
-            if (this.y === 90) {
-                addNewCar()
-            }
-            // setTimeout( ()=>{
-            //     return
-                
-            // },
-            // 5000
-            // )   
-    }
-    // transparent(){
-    //     const transparent = new Image()
-    //         transparent.src="images/transparent-car.png"
-    //         transparent.onload=()=>{
-    //                 ctx.drawImage(transparent,this.x,this.y)
-    //         }
-    // }
+        // setTimeout( ()=>{
+        //     this.y +=1
+        // },
+        // 4050
+        // )
+        // clearTimeout(2070)
+        this.y +=1
+        if (this.y === 90) {
+            addNewCar()
+        }
+        
+    } 
+    
     render(){
         const redCar = new Image()
             redCar.src= "images/redcar.png"
@@ -139,7 +133,7 @@ class DodgerSign{
         setTimeout( ()=>{
             this.y +=1
         },
-        5000
+        15000
         )        
     }
     render(){
@@ -151,7 +145,124 @@ class DodgerSign{
     }
 }
 
-let laneArray = [16, 90, 172, 240]
+class Go {
+    constructor(x,y,width,height){
+        this.x=x,
+        this.y=y,
+        this.width=width,
+        this.height=height
+    }
+    update(){
+        setTimeout( ()=>{
+            this.y +=1
+        },
+        250
+        )    
+    }
+    render(){
+        const go = new Image()
+        go.src= "images/Go!.png"
+        go.onload=()=>{
+            ctx.drawImage(go, this.x, this.y)
+        }
+    }
+}
+
+class One {
+    constructor(x,y,width,height){
+        this.x=x,
+        this.y=y,
+        this.width=width,
+        this.height=height
+    }
+    update(){
+        this.y +=1
+    }
+    render(){
+        const one = new Image()
+        one.src= "images/321.png"
+        one.onload=()=>{
+            ctx.drawImage(one, this.x, this.y)
+        }
+    }
+}
+class Minion {
+    constructor(x,y,width,height){
+        this.x=x,
+        this.y=y,
+        this.width=width,
+        this.height=height
+    }
+    update(){
+        setTimeout( ()=>{
+            this.y +=1
+        },
+        5000
+        )  
+    }
+    render(){
+        const minion = new Image()
+        minion.src= "images/minion.png"
+        minion.onload=()=>{
+            ctx.drawImage(minion, this.x, this.y)
+        }
+    }
+}
+class One {
+    constructor(x,y,width,height){
+        this.x=x,
+        this.y=y,
+        this.width=width,
+        this.height=height
+    }
+    update(){
+        this.y +=1
+    }
+    render(){
+        const one = new Image()
+        one.src= "images/321.png"
+        one.onload=()=>{
+            ctx.drawImage(one, this.x, this.y)
+        }
+    }
+}
+class One {
+    constructor(x,y,width,height){
+        this.x=x,
+        this.y=y,
+        this.width=width,
+        this.height=height
+    }
+    update(){
+        this.y +=1
+    }
+    render(){
+        const one = new Image()
+        one.src= "images/321.png"
+        one.onload=()=>{
+            ctx.drawImage(one, this.x, this.y)
+        }
+    }
+}
+class One {
+    constructor(x,y,width,height){
+        this.x=x,
+        this.y=y,
+        this.width=width,
+        this.height=height
+    }
+    update(){
+        this.y +=1
+    }
+    render(){
+        const one = new Image()
+        one.src= "images/321.png"
+        one.onload=()=>{
+            ctx.drawImage(one, this.x, this.y)
+        }
+    }
+}
+let laneArray = [16, 90, 172, 240, 315, 390]
 function randomRedCar(){
     return laneArray[Math.floor(Math.random()*laneArray.length)]
 }
@@ -166,10 +277,14 @@ function addNewCar(){
 function stopNewCar(){
     return
 }
+let go = new Go (0,0,350,40)
+
+let one = new One (0,0,350,40)
+
 
 let dodgerSign = new DodgerSign(0,-50,300,40,5)
 
-let yellowCar= new YellowCar(100,420,40,60)
+let yellowCar= new YellowCar(100,400,40,60)
 
 
 let redCar =new RedCar(16,0,30,50,25)
@@ -189,10 +304,8 @@ const gameLoop = () => {
         detectHit(car)
         } else {
             stopGameLoop()
-            
             document.getElementById('container').style.backgroundColor ='black'
-            document.getElementById('container').innerHTML=`<audio controls autoplay> id="lose" <source src="audio/Doh.mp3" type="audio/mpeg"></audio>`
-            document.getElementById('container').innerHTML= `<img id="simpson-doh-gif" src="https://media.giphy.com/media/TwtXMS5EnKDBK/giphy.gif"/>`
+            document.getElementById('container').innerHTML=`<h1 id="lose"> Doh! You didn't make it to the game </h1><audio controls autoplay> id="homer-doh" <source src="audio/Doh.mp3" type="audio/mpeg"></audio> <img id="simpson-gif-doh" src="https://media.giphy.com/media/TwtXMS5EnKDBK/giphy.gif"/>`
         }
     })
 
@@ -215,6 +328,18 @@ if (dodgerSign.alive===true){
     //     document.getElementById('container').innerHTML= `<img id="simpson-doh-gif" src="https://media.giphy.com/media/TwtXMS5EnKDBK/giphy.gif"/>`
     // }
     // redCar.transparent()
+    go.update()
+    go.render()
+
+    one.update()
+    one.render()
+
+    // two.update()
+    // two.render()
+
+    // three.update()
+    // three.render()
+
     dodgerSign.update()
     redCar.update()
 
@@ -224,7 +349,8 @@ if (dodgerSign.alive===true){
 }
     
 
-let gameInterval =  setInterval(gameLoop, 8)
+let gameInterval = setInterval(gameLoop, 8)
+
 
 const stopGameLoop=()=> {clearInterval(gameInterval)}
 

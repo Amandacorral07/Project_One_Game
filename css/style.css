@@ -2,9 +2,7 @@ body{
     background-color: #046EFD;
     
 }
-.container{
-    margin-top: 2.5%;
-}
+
 h1, h2{
     text-align: center;
     color: aliceblue;
@@ -59,7 +57,6 @@ h2{
     margin: 0 auto;
     display: block;
     width: 50%;
-    margin-top: 1%;
 }
 
 #back-button{
@@ -94,7 +91,7 @@ h2{
 }
 
 .buttons{
-    margin-top: 35px;
+    margin-top: 5px;
     /* change later once road is in container */
 }
 
@@ -114,18 +111,8 @@ ol{
     border: 7px solid whitesmoke;
     border-radius: 10px;
     width: 35%;
-    height: 500px;
+    height: 480px;
 }
-
-/* .road{
-    width: 400px;
-    height: fit-content;
-    background-color: rgb(42, 42, 42);
-    margin: auto;
-    position: relative;
-    border-left: 7px dashed white;
-    border-right: 7px dashed white; */
-/* } */
 
 #canvas {
     background-color: rgb(60, 59, 59);
@@ -133,40 +120,44 @@ ol{
     border-right: 7px dashed white;
     margin: auto;
     width: 100%;
-    height: 486px;
+    height: 466px;
     display: flex;
     justify-content: center;
 }
-#top-left {
-    grid-area: top-left;
-    display: flex;
-}
+
 #simpson-gif{
+    width: 80%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+    top: 85px;
+}
+#simpson-gif-doh{
     width: 60%;
     height: 50%;
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    position: relative;
-    top: 150px;
-    
 }
 
-#winner{
+#winner, #lose{
     color:rgb(255, 223, 37);
     font-size: 30px;
     /* position: relative;
     top: 130px */
 }
 
-
 #donut-gif-1{
-    left: 5px;
     position: absolute;
+    left: 5px;
+    max-width: 35%;
 }
 #donut-gif-2{
     right: 3px;
     position: absolute;
+    max-width: 35%;
 }
 
 audio{
