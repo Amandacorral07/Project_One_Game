@@ -191,7 +191,8 @@ class Minion {
         this.x=x,
         this.y=y,
         this.width=width,
-        this.height=height
+        this.height=height,
+        this.alive = true
     }
     update(){
         setTimeout( ()=>{
@@ -208,57 +209,72 @@ class Minion {
         }
     }
 }
-class One {
+class Stewie {
     constructor(x,y,width,height){
         this.x=x,
         this.y=y,
         this.width=width,
-        this.height=height
+        this.height=height,
+        this.alive = true
     }
     update(){
-        this.y +=1
+        setTimeout( ()=>{
+            this.y +=1
+        },
+        8500
+        )  
     }
     render(){
-        const one = new Image()
-        one.src= "images/321.png"
-        one.onload=()=>{
-            ctx.drawImage(one, this.x, this.y)
+        const stewie = new Image()
+        stewie.src= "images/stewie.png"
+        stewie.onload=()=>{
+            ctx.drawImage(stewie, this.x, this.y)
         }
     }
 }
-class One {
+class Spongebob {
     constructor(x,y,width,height){
         this.x=x,
         this.y=y,
         this.width=width,
-        this.height=height
+        this.height=height,
+        this.alive = true
     }
     update(){
-        this.y +=1
+        setTimeout( ()=>{
+            this.y +=1
+        },
+        10500
+        ) 
     }
     render(){
-        const one = new Image()
-        one.src= "images/321.png"
-        one.onload=()=>{
-            ctx.drawImage(one, this.x, this.y)
+        const spongebob = new Image()
+        spongebob.src= "images/spongebob.png"
+        spongebob.onload=()=>{
+            ctx.drawImage(spongebob, this.x, this.y)
         }
     }
 }
-class One {
+class Gma {
     constructor(x,y,width,height){
         this.x=x,
         this.y=y,
         this.width=width,
-        this.height=height
+        this.height=height,
+        this.alive = true
     }
     update(){
-        this.y +=1
+        setTimeout( ()=>{
+            this.y +=1
+        },
+        13000
+        ) 
     }
     render(){
-        const one = new Image()
-        one.src= "images/321.png"
-        one.onload=()=>{
-            ctx.drawImage(one, this.x, this.y)
+        const gma = new Image()
+        gma.src= "images/gma.png"
+        gma.onload=()=>{
+            ctx.drawImage(gma, this.x, this.y)
         }
     }
 }
@@ -274,13 +290,40 @@ function addNewCar(){
     cars.push(newRedCar)
 }
 
-function stopNewCar(){
-    return
+function randoMinion(){
+    return  laneArray[Math.floor(Math.random()*laneArray.length)]
 }
+let randoMin = randoMinion()
+
+
+function randoStew(){
+    return  laneArray[Math.floor(Math.random()*laneArray.length)]
+}
+let randoStewie = randoStew()
+
+
+function randoSponge(){
+    return  laneArray[Math.floor(Math.random()*laneArray.length)]
+}
+let randoSpongebob = randoSponge()
+
+function randoGmas(){
+    return  laneArray[Math.floor(Math.random()*laneArray.length)]
+}
+let randoGma = randoGmas()
+
+
 let go = new Go (0,0,350,40)
 
 let one = new One (0,0,350,40)
 
+let minion = new Minion (randoMin,-60,40,40)
+
+let stewie = new Stewie (randoStewie,-60,40,40)
+
+let spongebob = new Spongebob (randoSpongebob,-60,40,40)
+
+let gma = new Gma (randoGma,-60,40,40)
 
 let dodgerSign = new DodgerSign(0,-50,300,40,5)
 
@@ -318,27 +361,51 @@ if (dodgerSign.alive===true){
         document.getElementById('container').innerHTML=`<img id="donut-gif-1" src="https://media.giphy.com/media/U7PwlrLCvk0Zoviyht/giphy.gif" /> <img id="donut-gif-2" src="https://media.giphy.com/media/U7PwlrLCvk0Zoviyht/giphy.gif" /> <h1 id="winner">Winner Winner Chicken Dinner!</h1> <audio controls autoplay> id="homer-win-voice" <source src="audio/I win.mp3" type="audio/mpeg"></audio> <img id="simpson-gif" src="https://media.giphy.com/media/ZCldwd8JpfXgY/giphy.gif"/>`
     }
 
-    // if (redCar.alive){
-    //     redCar.render()
-    //     detectHit(redCar)
-    // } else {
-    //     stopGameLoop()
-    //     document.getElementById('container').style.backgroundColor ='black'
-    //     document.getElementById('container').innerHTML=`<audio controls autoplay> id="lose" <source src="audio/Doh.mp3" type="audio/mpeg"></audio>`
-    //     document.getElementById('container').innerHTML= `<img id="simpson-doh-gif" src="https://media.giphy.com/media/TwtXMS5EnKDBK/giphy.gif"/>`
-    // }
-    // redCar.transparent()
+    if (minion.alive===true){ 
+        minion.render()
+        detectHit(minion)
+    }else{
+        stopGameLoop()
+        document.getElementById('container').style.backgroundColor ='black'
+        document.getElementById('container').innerHTML=`<h1 id="lose"> Doh! You didn't make it to the game </h1><audio controls autoplay> id="homer-doh" <source src="audio/Doh.mp3" type="audio/mpeg"></audio> <img id="simpson-gif-doh" src="https://media.giphy.com/media/TwtXMS5EnKDBK/giphy.gif"/>`
+    }
+
+    if (stewie.alive ===true){
+        stewie.render()
+        detectHit(stewie)
+    } else{
+        stopGameLoop()
+        document.getElementById('container').style.backgroundColor ='black'
+        document.getElementById('container').innerHTML=`<h1 id="lose"> Doh! You didn't make it to the game </h1><audio controls autoplay> id="homer-doh" <source src="audio/Doh.mp3" type="audio/mpeg"></audio> <img id="simpson-gif-doh" src="https://media.giphy.com/media/TwtXMS5EnKDBK/giphy.gif"/>`
+    }
+
+    if (gma.alive ===true){
+        gma.render()
+        detectHit(gma)
+    } else{
+        stopGameLoop()
+        document.getElementById('container').style.backgroundColor ='black'
+        document.getElementById('container').innerHTML=`<h1 id="lose"> Doh! You didn't make it to the game </h1><audio controls autoplay> id="homer-doh" <source src="audio/Doh.mp3" type="audio/mpeg"></audio> <img id="simpson-gif-doh" src="https://media.giphy.com/media/TwtXMS5EnKDBK/giphy.gif"/>`
+    }
+
+    if( spongebob.alive === true){
+        spongebob.render()
+        detectHit(spongebob)
+    }else{
+        stopGameLoop()
+        document.getElementById('container').style.backgroundColor ='black'
+        document.getElementById('container').innerHTML=`<h1 id="lose"> Doh! You didn't make it to the game </h1><audio controls autoplay> id="homer-doh" <source src="audio/Doh.mp3" type="audio/mpeg"></audio> <img id="simpson-gif-doh" src="https://media.giphy.com/media/TwtXMS5EnKDBK/giphy.gif"/>`
+    }
     go.update()
     go.render()
 
     one.update()
     one.render()
 
-    // two.update()
-    // two.render()
-
-    // three.update()
-    // three.render()
+    minion.update()
+    stewie.update()
+    gma.update()
+    spongebob.update()
 
     dodgerSign.update()
     redCar.update()
