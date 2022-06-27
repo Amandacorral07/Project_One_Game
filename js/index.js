@@ -91,7 +91,7 @@ class RedCar{
     
     render(){
         const redCar = new Image()
-            redCar.src= "./images/redcar.png"
+            redCar.src= "./../images/redcar.png"
             redCar.onload=()=>{
                 ctx.drawImage(redCar, this.x, this.y)
             }
