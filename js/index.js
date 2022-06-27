@@ -9,6 +9,7 @@ const cars = []
 
 const dodger = []
 
+// class for Yellow Car
 class YellowCar{
     constructor(x, y, width, height){
         this.x = x,
@@ -91,7 +92,7 @@ class RedCar{
     
     render(){
         const redCar = new Image()
-            redCar.src= "./../images/redcar.png"
+            redCar.src= "images/redcar.png"
             redCar.onload=()=>{
                 ctx.drawImage(redCar, this.x, this.y)
             }
